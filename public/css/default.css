@@ -1,0 +1,10 @@
+
+ * {
+   margin: 0;
+   padding: 0;
+ }
+
+.btn-detail, .btn-delete {
+ float: left;
+ margin: 5px 2px;
+}

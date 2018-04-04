@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>CRDM</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -78,18 +78,29 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="title m-b-md crdm">
+                  Centrul Republican de Diagnosticare Medicala
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/reagents">Reagenti</a>
+                    <a href="/hands">Eliberari</a>
+
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+
+        window.addEventListener('load', changeHeader);
+          window.addEventListener('resize', changeHeader);
+
+          function changeHeader() {
+            if(window.innerWidth < 620) {
+              document.querySelector('.crdm').innerText = 'CRDM';
+            } else {
+              document.querySelector('.crdm').innerText = 'Centrul Republican de Diagnosticare Medicala';
+            }
+          }
+        </script>
     </body>
 </html>

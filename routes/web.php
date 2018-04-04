@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::group(['middleware' => ['auth']], function()
+// {
+//   Route::get('/table', function() {
+//     return view('test');
+//   });
+// });
+
+
+Route::get('/reagents', 'ReagentController@index');
+
+Route::post('/reagent/store', 'ReagentController@store');
+
+Route::get('/reagent/{id}/edit', 'ReagentController@edit');
+Route::get('/reagent/{id}/delete', 'ReagentController@delete');

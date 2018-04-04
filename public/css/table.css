@@ -1,0 +1,162 @@
+#reagents-table {
+  margin: 5vh auto;
+}
+#reagents-table tr:nth-child(2n) {
+  background-color: #ccc;
+}
+#reagents-table td {
+  line-height: 25px;
+  padding-right: 5px;
+  padding-left: 0.5%;
+  border: 1px solid black;
+}
+
+#reagents-table th {
+  padding: 2px 8px 2px 8px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#reagents-table thead, #reagents-table tfoot {
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+}
+
+#reagents-table thead:hover {
+  cursor: pointer;
+}
+
+#reagents-form {
+  display: inline;
+  margin-left: 30%;
+}
+
+#demo-top-bar {
+  text-align: left;
+  background: #222;
+  position: relative;
+  zoom: 1;
+  width: 100% !important;
+  z-index: 6000;
+  padding: 20px 0 20px;
+}
+#demo-bar-inside {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+#demo-bar-buttons {
+  padding-top: 10px;
+  float: right;
+}
+#demo-bar-buttons a {
+  font-size: 12px;
+  margin-left: 20px;
+  color: white;
+  margin: 2px 0;
+  text-decoration: none;
+  font: 14px "Lucida Grande", Sans-Serif !important;
+}
+#demo-bar-buttons a:hover,
+#demo-bar-buttons a:focus {
+  text-decoration: underline;
+}
+#demo-bar-badge {
+  display: inline-block;
+  width: 302px;
+  padding: 0 !important;
+  margin: 0 !important;
+  /* background-color: transparent !important; */
+
+}
+#demo-bar-badge a {
+  display: block;
+  width: 100%;
+  height: 38px;
+  border-radius: 0;
+  bottom: auto;
+  margin: 0;
+  /* background: url(/images/examples-logo.png) no-repeat; */
+  /* text-indent: -9999px; */
+  background-size: 100%;
+  text-decoration: none;
+  overflow: hidden;
+  color: #fff;
+  padding-left: 5px;
+}
+#demo-bar-badge:before, #demo-bar-badge:after {
+  display: none !important;
+}
+
+.text-center .btn {
+  min-width: 150px;
+}
+
+
+ @media
+ only screen and (max-width: 760px),
+ (min-device-width: 768px) and (max-device-width: 1024px)  {
+   /* Force table to not be like tables anymore */
+   #reagents-table, #reagents-table thead, #reagents-table tbody,
+   #reagents-table th, #reagents-table td, #reagents-table tr {
+     display: block;
+   }
+   /* Hide table headers (but not display: none;, for accessibility) */
+   #reagents-table thead tr, #reagents-table tfoot tr {
+     position: absolute;
+     top: -9999px;
+     left: -9999px;
+   }
+   #reagents-table tr { border: 1px solid #ccc; }
+
+   #reagents-table td {
+     /* Behave  like a "row" */
+     border: none;
+     border-bottom: 1px solid #eee;
+     position: relative;
+     padding-left: 50%;
+   }
+
+   #reagents-table td:before {
+     /* Now like a table header */
+     position: absolute;
+     /* Top/left values mimic padding */
+     top: 0px;
+     left: 6px;
+     width: 45%;
+     padding-right: 10px;
+     white-space: nowrap;
+   }
+
+   /*
+   Label the data
+   */
+   #reagents-table td:nth-of-type(1):before { content: "Producator"; }
+   #reagents-table td:nth-of-type(2):before { content: "Data primirii"; }
+   #reagents-table td:nth-of-type(3):before { content: "Cod intern"; }
+   #reagents-table td:nth-of-type(4):before { content: "Denumire"; }
+   #reagents-table td:nth-of-type(5):before { content: "Cod Lot"; }
+   #reagents-table td:nth-of-type(6):before { content: "Data expirarii"; }
+   #reagents-table td:nth-of-type(7):before { content: "Actiuni"; }
+ }
+
+ /* Smartphones (portrait and landscape) ----------- */
+ @media only screen
+ and (min-device-width : 320px)
+ and (max-device-width : 480px) {
+   body {
+     padding: 0;
+     margin: 0;
+     width: 320px; }
+   }
+
+ /* iPads (portrait and landscape) ----------- */
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+   body {
+     width: 495px;
+   }
+ }
