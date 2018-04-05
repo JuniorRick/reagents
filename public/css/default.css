@@ -4,7 +4,7 @@
    padding: 0;
  }
 
-.btn-detail, .btn-delete {
+.btn-edit, .btn-delete, .btn-clone {
  float: left;
  margin: 5px 2px;
 }

@@ -33,4 +33,11 @@ class ReagentController extends Controller
 
       return redirect()->back();
     }
+
+    public function update($id, Request $request) {
+      $reagent = \App\Reagent::findOrFail($id);
+      $reagent->update($request->all());
+
+      return redirect()->back();
+    }
 }

@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/reagents', 'ReagentController@index');
 
 Route::post('/reagent/store', 'ReagentController@store');
+Route::post('/reagent/{id}/update', 'ReagentController@update');
 
 Route::get('/reagent/{id}/edit', 'ReagentController@edit');
 Route::get('/reagent/{id}/delete', 'ReagentController@delete');

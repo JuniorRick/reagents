@@ -13,7 +13,9 @@
   <div class="container" style="max-width: 600px;">
 
 
-    <form class="form-container" method="post" action="reagent/store">
+    <form class="form-container" method="post" action="reagent/store/"
+      style="display: none">
+
       {{ csrf_field() }}
       <br>
       <p class="h4 text-center mb-4 add-new">Adaugati o inregistrare noua</p>
@@ -126,9 +128,10 @@
             <td>{{ $reagent->name }}</td>
             <td>{{ $reagent->lot}}</td>
             <td>{{ $reagent->expire}}</td>
-            <td class="clearfix" style="min-width: 100px;">
-              <a class="btn btn-warning btn-xs btn-detail" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
+            <td class="clearfix" style="min-width: 150px;">
+              <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
               <a class="btn btn-danger btn-xs btn-delete" href="/reagent/{{ $reagent->id }}/delete">Delete</a>
+              <a class="btn btn-primary btn-xs btn-clone" href="/reagent/{{ $reagent->id }}/edit">Clone</a>
             </td>
           </tr>
 

@@ -16,8 +16,10 @@
 // $("input#search").on("keydown keyup", function() {
 //   allRows.hide();
 //   $("tr:contains('" + $(this).val() + "')").show();
-// } 
+// }
 
+var  hidden = true;
+var curReagentId = 0;
 
 $(document).ready(function() {
   $("#reagents-table").tablesorter();
@@ -29,7 +31,6 @@ $(document).ready(function() {
   });
 
   $( ".form-container" ).hide();
-  let hidden = true;
   $( "#form-toggle" ).click(function() {
     if(hidden) {
       $( ".form-container" ).show();
@@ -42,4 +43,63 @@ $(document).ready(function() {
     }
   });
 
+});
+
+$('input[type="submit"]').click(function(e) {
+  e.preventDefault();
+  if( $('input[type="submit"]').val() == 'Actualizare') {
+    $('.form-container').attr('action', `reagent/${curReagentId}/update`);
+  }
+  $('.form-container').submit();
+});
+
+$('.btn-clone').click( function(event) {
+  event.preventDefault();
+      $('input[type="submit"]').val('Salvare');
+  let url = $(this).attr('href');
+  $.get(url).then(function(response) {
+    $('.form-container').show();
+    $('#form-toggle').text('Inchide formular');
+    hidden = false;
+    $("html, body").animate({
+      scrollTop: 0,
+    }, 500);
+
+    for(let elem in response) {
+      if($(`[name="${elem}"]`).length) {
+        $(`[name="${elem}"]`).val(response[elem]);
+      }
+    }
+
+    $('.selectpicker').selectpicker('refresh');
+
+  }, function() {
+    console.log("error getting " + url);
+  });
+});
+
+$('.btn-edit').click( function(event) {
+  event.preventDefault();
+  let url = $(this).attr('href');
+  curReagentId = url.split('/')[2];
+  $.get(url).then(function(response) {
+    $('.form-container').show();
+    $('#form-toggle').text('Inchide formular');
+    hidden = false;
+    $("html, body").animate({
+      scrollTop: 0,
+    }, 500);
+    $('input[type="submit"]').val('Actualizare');
+
+    for(let elem in response) {
+      if($(`[name="${elem}"]`).length) {
+        $(`[name="${elem}"]`).val(response[elem]);
+      }
+    }
+
+    $('.selectpicker').selectpicker('refresh');
+
+  }, function() {
+    console.log("error getting " + url);
+  });
 });
