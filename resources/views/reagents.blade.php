@@ -27,7 +27,7 @@
           <div class='col-sm-6'>
             <label for="selectpicker" class="grey-text">Producator</label>
             <select class="form-control selectpicker" id="selectpicker" name="producer_id" data-live-search="true">
-              <option data-tokens="ketchup mustard" selected disabled>----- Selectati producatorul -----</option>
+              <option data-tokens="ketchup mustard" value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
                $producers = \App\Producer::all();
               @endphp
@@ -86,7 +86,8 @@
       <br>
 
       <div class="text-center mt-4">
-          <input class="btn btn-indigo" type="submit" value="Salvare">
+          <input class="btn btn-primary" type="submit" value="Salvare">
+          <button class="btn btn-default btn-cancel" type="button">Anulare</button>
       </div>
     </form>
   </div>

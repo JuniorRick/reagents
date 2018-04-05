@@ -103,3 +103,15 @@ $('.btn-edit').click( function(event) {
     console.log("error getting " + url);
   });
 });
+
+
+$('.btn-cancel').click(function () {
+  // location.reload();
+  $('#selectpicker').val('default');
+  $('#selectpicker').selectpicker('refresh');
+  $('.form-container')[0].reset();
+  $('input[type="submit"]').val('Salvare');
+  $('.form-container').hide();
+  $('#form-toggle').text('Deschide formular');
+  hidden = true;
+});
