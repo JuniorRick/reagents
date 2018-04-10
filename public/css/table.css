@@ -1,17 +1,17 @@
-#reagents-table {
+.records-table {
   margin: 5vh auto;
 }
-#reagents-table tr:nth-child(2n) {
+.records-table tr:nth-child(2n) {
   background-color: #ccc;
 }
-#reagents-table td {
+.records-table td {
   line-height: 25px;
   padding-right: 5px;
   padding-left: 0.5%;
   border: 1px solid black;
 }
 
-#reagents-table th {
+.records-table th {
   padding: 2px 8px 2px 8px;
 }
 
@@ -19,13 +19,13 @@ body {
   overflow-x: hidden;
 }
 
-#reagents-table thead, #reagents-table tfoot {
+.records-table thead, .records-table tfoot {
   color: #fff;
   background-color: #000;
   text-align: center;
 }
 
-#reagents-table thead:hover {
+.records-table thead:hover {
   cursor: pointer;
 }
 
@@ -101,19 +101,19 @@ body {
  only screen and (max-width: 760px),
  (min-device-width: 768px) and (max-device-width: 1024px)  {
    /* Force table to not be like tables anymore */
-   #reagents-table, #reagents-table thead, #reagents-table tbody,
-   #reagents-table th, #reagents-table td, #reagents-table tr {
+   .records-table, .records-table thead, .records-table tbody,
+   .records-table th, .records-table td, .records-table tr {
      display: block;
    }
    /* Hide table headers (but not display: none;, for accessibility) */
-   #reagents-table thead tr, #reagents-table tfoot tr {
+   .records-table thead tr, .records-table tfoot tr {
      position: absolute;
      top: -9999px;
      left: -9999px;
    }
-   #reagents-table tr { border: 1px solid #ccc; }
+   .records-table tr { border: 1px solid #ccc; }
 
-   #reagents-table td {
+   .records-table td {
      /* Behave  like a "row" */
      border: none;
      border-bottom: 1px solid #eee;
@@ -121,7 +121,7 @@ body {
      padding-left: 50%;
    }
 
-   #reagents-table td:before {
+   .records-table td:before {
      /* Now like a table header */
      position: absolute;
      /* Top/left values mimic padding */
@@ -135,13 +135,13 @@ body {
    /*
    Label the data
    */
-   #reagents-table td:nth-of-type(1):before { content: "Producator"; }
-   #reagents-table td:nth-of-type(2):before { content: "Data primirii"; }
-   #reagents-table td:nth-of-type(3):before { content: "Cod intern"; }
-   #reagents-table td:nth-of-type(4):before { content: "Denumire"; }
-   #reagents-table td:nth-of-type(5):before { content: "Cod Lot"; }
-   #reagents-table td:nth-of-type(6):before { content: "Data expirarii"; }
-   #reagents-table td:nth-of-type(7):before { content: "Actiuni"; }
+   .records-table td:nth-of-type(1):before { content: "Producator"; }
+   .records-table td:nth-of-type(2):before { content: "Data primirii"; }
+   .records-table td:nth-of-type(3):before { content: "Cod intern"; }
+   .records-table td:nth-of-type(4):before { content: "Denumire"; }
+   .records-table td:nth-of-type(5):before { content: "Cod Lot"; }
+   .records-table td:nth-of-type(6):before { content: "Data expirarii"; }
+   .records-table td:nth-of-type(7):before { content: "Actiuni"; }
  }
 
  /* Smartphones (portrait and landscape) ----------- */

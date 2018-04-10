@@ -84,7 +84,7 @@
 
                 <div class="links">
                     <a href="/reagents">Reagenti</a>
-                    <a href="/hands">Eliberari</a>
+                    <a href="/orders">Eliberari</a>
 
                 </div>
             </div>

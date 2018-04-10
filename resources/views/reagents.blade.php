@@ -95,7 +95,7 @@
 
   @if (isset($reagents) && $reagents->count() != 0)
 
-    <table id="reagents-table" class="tablesorter">
+    <table id="reagents-table" class="tablesorter records-table">
       <thead>
         <tr>
           <th>Producator</th>

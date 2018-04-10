@@ -20,6 +20,7 @@
 
 var  hidden = true;
 var curReagentId = 0;
+var selectedReagents = [];
 
 $(document).ready(function() {
   $("#reagents-table").tablesorter();
@@ -42,6 +43,9 @@ $(document).ready(function() {
       $('#form-toggle').text('Deschide formular');
     }
   });
+
+  $('#display-reagent').hide();
+  // $('#display-producer').hide();
 
 });
 
@@ -114,4 +118,61 @@ $('.btn-cancel').click(function () {
   $('.form-container').hide();
   $('#form-toggle').text('Deschide formular');
   hidden = true;
+});
+//
+// $('#select-person').change(function() {
+//     $('#display-producer').show();
+// });
+
+$('#select-producer').change(function() {
+  $('#display-reagent').show();
+  $('#select-reagent').find('option').remove();
+  let producer_id = $(this).val();
+  let url = `/reagents/${producer_id}`;
+  $.get(url).then(function(response) {
+    $('#select-reagent').append($('<option>', {
+      value: 'default',
+      text: '----- Selectati reagent -----',
+    }));
+    $.each(response, function (i, elem) {
+      $('#select-reagent').append($('<option>', {
+        dataTokens: elem.name,
+        value: elem.id,
+        text: `[${elem.code}] ${elem.name}`,
+      }));
+    });
+
+    $('.selectpicker').selectpicker('refresh');
+  }, function() {
+    console.log("error getting " + url);
+  });
+});
+
+$('.btn-select').click(function() {
+  const reagent_id = $('[name="reagent_id"]').val();
+  const url = `/reagent/${reagent_id}`;
+  $.get(url).then(function(response) {
+    // console.log(response);
+    var person_id = $('#select-person').val();
+    $('tbody').append($('<tr>')
+      .append($('<td>')
+        .text(response.code)
+      ).append($('<td>')
+        .text(response.name)
+      ).append($('<td>')
+        .text($(`#select-person option[value="${person_id}"]`).text())
+        .attr('val', $('#select-person').val())
+      ).append($('<td>')
+        .text($('[name="hand"]').val())
+      ).append($('<td>')
+        .append($('<button>')
+          .text('Eliminare')
+          .attr('class','btn btn-danger btn-xs')
+        )
+      )
+    );
+  }, function() {
+    console.log("error getting " + url);
+  });
+  $('.selectpicker').selectpicker('refresh');
 });

@@ -13,6 +13,18 @@ class ReagentController extends Controller
       return view('reagents')->with('reagents', $reagents);
     }
 
+    public function reagents($producer_id) {
+      $reagents = \App\Reagent::where('producer_id', $producer_id)->get();
+
+      return response()->json($reagents);
+    }
+
+    public function reagent($id) {
+      $reagent = \App\Reagent::findOrFail($id);
+
+      return response()->json($reagent);
+    }
+
     public function store(Request $request) {
 
       $reagent = $request->all();
