@@ -8,6 +8,9 @@
       </h2>
 
       <div id="demo-bar-buttons">
+        <a href="/reagents">Reagenti</a>
+        <a href="/orders">Eliberare Noua</a>
+        <a href="/orders/all">Eliberari Totale</a>
       </div>
 
     </div>

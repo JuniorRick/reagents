@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/reagents', 'ReagentController@index');
+
 Route::get('/reagent/{id}', 'ReagentController@reagent');
 Route::get('/reagents/{id}', 'ReagentController@reagents');
 
@@ -36,8 +37,9 @@ Route::get('/reagent/{id}/delete', 'ReagentController@delete');
 
 
 Route::get('/orders', 'OrderController@index');
+Route::get('/orders/all', 'OrderController@orders');
 
-Route::post('/order/store', 'OrderController@store');
+Route::post('/orders/store', 'OrderController@store');
 Route::post('/order/{id}/update', 'OrderController@update');
 
 Route::get('/order/{id}/edit', 'OrderController@edit');

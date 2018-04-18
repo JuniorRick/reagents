@@ -18,20 +18,20 @@
 //   $("tr:contains('" + $(this).val() + "')").show();
 // }
 
-var  hidden = true;
+var hidden = true;
 var curReagentId = 0;
 var selectedReagents = [];
 
 $(document).ready(function() {
+  //enable table sorter
   $("#reagents-table").tablesorter();
 
-  // $('#datetimepicker1').datetimepicker();
-  // $('#datetimepicker2').datetimepicker();
+  //create date picker
   $('.datetimepicker').datetimepicker({
     format:'YYYY-MM-DD HH:mm:ss',
   });
 
-  $( ".form-container" ).hide();
+  //show/hide form
   $( "#form-toggle" ).click(function() {
     if(hidden) {
       $( ".form-container" ).show();
@@ -44,11 +44,12 @@ $(document).ready(function() {
     }
   });
 
+  //hide form after submit
   $('#display-reagent').hide();
-  // $('#display-producer').hide();
 
 });
 
+//submit the form
 $('input[type="submit"]').click(function(e) {
   e.preventDefault();
   if( $('input[type="submit"]').val() == 'Actualizare') {
@@ -57,6 +58,8 @@ $('input[type="submit"]').click(function(e) {
   $('.form-container').submit();
 });
 
+
+//clone the record
 $('.btn-clone').click( function(event) {
   event.preventDefault();
       $('input[type="submit"]').val('Salvare');
@@ -82,6 +85,8 @@ $('.btn-clone').click( function(event) {
   });
 });
 
+
+//edit the record
 $('.btn-edit').click( function(event) {
   event.preventDefault();
   let url = $(this).attr('href');
@@ -108,7 +113,7 @@ $('.btn-edit').click( function(event) {
   });
 });
 
-
+//refresh form
 $('.btn-cancel').click(function () {
   // location.reload();
   $('#selectpicker').val('default');
@@ -119,11 +124,15 @@ $('.btn-cancel').click(function () {
   $('#form-toggle').text('Deschide formular');
   hidden = true;
 });
-//
-// $('#select-person').change(function() {
-//     $('#display-producer').show();
-// });
 
+$('.btn-clear').click(function() {
+  $('tbody').find('tr').remove();
+  $('#orders-table').hide();
+  selectedReagents = [];
+});
+
+
+//display reagents by producer on producer selected
 $('#select-producer').change(function() {
   $('#display-reagent').show();
   $('#select-reagent').find('option').remove();
@@ -147,15 +156,28 @@ $('#select-producer').change(function() {
     console.log("error getting " + url);
   });
 });
+var i = 0;
 
+//add reagent to the list
 $('.btn-select').click(function() {
+  $('.btn-select').prop('disabled', true);
+
   const reagent_id = $('[name="reagent_id"]').val();
   const url = `/reagent/${reagent_id}`;
+    $('#orders-table').show();
+    var person_id = $('#select-person').val();
+
+
+    i++;
+
+
   $.get(url).then(function(response) {
     // console.log(response);
-    var person_id = $('#select-person').val();
     $('tbody').append($('<tr>')
+      .attr('id', response.id + "" + i)
       .append($('<td>')
+        .text(i)
+      ).append($('<td>')
         .text(response.code)
       ).append($('<td>')
         .text(response.name)
@@ -167,12 +189,54 @@ $('.btn-select').click(function() {
       ).append($('<td>')
         .append($('<button>')
           .text('Eliminare')
-          .attr('class','btn btn-danger btn-xs')
+          .attr('class','btn btn-danger btn-xs btn-remove-selection')
+          .attr('value', response.id + "" + i)
         )
       )
     );
+
+    selectedReagents.push({id: response.id + "" + i, reagent_id: reagent_id,
+      person_id: person_id, created_at:  $('#time').val() });
+
+
+    //eliminate reagent from the list
+    $('.btn-remove-selection').on('click', function() {
+      let id = $(this).val();
+      $(`#${id}`).remove();
+      selectedReagents = selectedReagents.filter(function(el) {
+        return el.id !== id;
+      });
+    });
+
+    $('.btn-select').prop('disabled', false);
+
   }, function() {
     console.log("error getting " + url);
   });
   $('.selectpicker').selectpicker('refresh');
 });
+
+
+//bulk store
+$('#btn-store').click( function() {
+    console.log('trying to store data...');
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    for(let reagent of selectedReagents) {
+      delete reagent.id;
+    $.ajax({
+      url: '/orders/store',
+      type: 'POST',
+      data: reagent,
+      success: function(response, textStatus, jqXHR) {
+        console.log("success");
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        alert(textStatus, errorThrown);
+      }
+    });
+  }
+  });

@@ -5,80 +5,13 @@
 
 <div id="page-wrap">
 
-  <div class="container-fluid" style="margin: 5px;">
+  {{-- <div class="container-fluid" style="margin: 5px;">
     <button class="btn" id="form-toggle" name="button">Deschide formular</button>
-  </div>
+  </div> --}}
 
 
   <div class="container" style="max-width: 600px;">
 
-
-    <form class="form-container" method="post" action="order/store/"
-      style="display: none">
-
-      {{ csrf_field() }}
-      <br>
-      <p class="h4 text-center mb-4 add-new">Eliberare noua</p>
-      <br>
-
-
-      <div class="row">
-        <div class="form-group">
-          <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text">Persoana</label>
-            <select class="form-control selectpicker" id="select-person" name="person_id" data-live-search="true">
-              <option value="default" selected disabled>----- Selectati persona -----</option>
-              @php
-               $persons = \App\Person::all();
-              @endphp
-
-              @foreach ($persons as $person)
-                <option data-tokens="{{ $person->fullname }}" value="{{ $person->id }}">
-                  {{ $person->fullname }}
-                </option>
-              @endforeach
-            </select>
-          </div>
-
-          <div class='col-sm-6' id="display-producer">
-            <label for="selectpicker" class="grey-text">Producator</label>
-            <select class="form-control selectpicker" id="select-producer" data-live-search="true">
-              <option value="default" selected disabled>----- Selectati producatorul -----</option>
-              @php
-               $producers = \App\Producer::all();
-              @endphp
-
-              @foreach ($producers as $producer)
-                <option data-tokens="{{ $producer->name }}" value="{{ $producer->id }}">
-                  {{ $producer->name }}
-                </option>
-              @endforeach
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row" id="display-reagent">
-        <div class="form-group">
-          <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text">Reagent</label>
-            <select class="form-control selectpicker" id="select-reagent" name="reagent_id" data-live-search="true">
-              {{-- <option value="default" selected disabled>----- Selectati reagent -----</option> --}}
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="text-center mt-4">
-        <input class="btn btn-primary" type="button" value="Stocare">
-        <button class="btn btn-default btn-cancel" type="button">Anulare</button>
-      </div>
-    </form>
-  </div>
 
 
   @if (isset($orders) && $orders->count() != 0)

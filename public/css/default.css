@@ -8,3 +8,9 @@
  float: left;
  margin: 5px 2px;
 }
+
+#demo-bar-buttons a {
+  padding: 10px;
+  text-transform: capitalize;
+  text-decoration: none;
+}

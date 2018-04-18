@@ -13,10 +13,16 @@ class OrderController extends Controller
       return view('orders')->with('orders', $orders);
     }
 
+    public function orders() {
+      $orders = \App\Order::all();
+
+      return view('ordersAll')->with('orders', $orders);
+    }
+
     public function store(Request $request) {
 
-      $order = $request->all();
-      \App\Order::create($order);
+      $orders = $request->all();
+        \App\Order::insert($orders);
 
       return redirect()->back();
     }
