@@ -20,3 +20,7 @@
   margin-top: 10px;
   margin-bottom: - 30px;
 }
+
+.bootstrap-select > select {
+    z-index: 0 !important;
+}

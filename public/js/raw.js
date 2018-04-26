@@ -58,6 +58,11 @@ $(document).ready(function() {
 
 });
 
+
+$(".selectpicker").change(function() {
+    $('.btn-group.bootstrap-select.form-control').removeClass('open');
+});
+
 //submit the form
 $('input[type="submit"]').click(function(e) {
   e.preventDefault();

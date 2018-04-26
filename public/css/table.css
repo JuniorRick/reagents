@@ -30,7 +30,7 @@ body {
 
 .records-table thead tr th:hover {
     cursor: pointer;
-    color: red;
+    color: rgba(255, 164, 164, 0.89);
     border: 2px solid white;
     border-top: 0;
     border-bottom: 0;
