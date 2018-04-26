@@ -14,3 +14,9 @@
   text-transform: capitalize;
   text-decoration: none;
 }
+
+.table-hint {
+  color: red;
+  margin-top: 10px;
+  margin-bottom: - 30px;
+}

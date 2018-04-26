@@ -24,9 +24,16 @@ body {
   background-color: #000;
   text-align: center;
 }
+.records-table thead tr th {
+      box-sizing: border-box;
+}
 
-.records-table thead:hover {
-  cursor: pointer;
+.records-table thead tr th:hover {
+    cursor: pointer;
+    color: red;
+    border: 2px solid white;
+    border-top: 0;
+    border-bottom: 0;
 }
 
 #reagents-form {
@@ -67,7 +74,7 @@ body {
 }
 #demo-bar-badge {
   display: inline-block;
-  width: 302px;
+  width: 200px;
   padding: 0 !important;
   margin: 0 !important;
   /* background-color: transparent !important; */
@@ -88,9 +95,24 @@ body {
   color: #fff;
   padding-left: 5px;
 }
+
+
 #demo-bar-badge:before, #demo-bar-badge:after {
   display: none !important;
 }
+
+#search-container {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#search-container input {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+}
+
 
 .text-center .btn {
   min-width: 150px;

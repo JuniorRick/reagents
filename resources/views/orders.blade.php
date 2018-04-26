@@ -92,7 +92,7 @@
 
 
   @if (isset($orders) && $orders->count() != 0)
-  <div id="orders-table">
+  <div id="orders-table" class="orders-new">
     <table  class="tablesorter records-table">
       <thead>
         <tr>

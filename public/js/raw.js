@@ -10,13 +10,20 @@
 //     }
 //   });
 // });
-//
-//
-// var allRows = $("tr");
-// $("input#search").on("keydown keyup", function() {
-//   allRows.hide();
-//   $("tr:contains('" + $(this).val() + "')").show();
-// }
+
+$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+    return function( elem ) {
+        return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+    };
+});
+
+var allRows = $("tr");
+$("input#search").on("keydown keyup", function() {
+  allRows.hide();
+  $('thead tr').show();
+  $('tfoot tr').show();
+  $("tr:contains('" + $(this).val() + "')").show();
+});
 
 var hidden = true;
 var curReagentId = 0;
@@ -25,11 +32,13 @@ var selectedReagents = [];
 $(document).ready(function() {
   //enable table sorter
   $("#reagents-table").tablesorter();
-
+  $("#orders-table").tablesorter();
+  $('.orders-new').hide();
   //create date picker
   $('.datetimepicker').datetimepicker({
     format:'YYYY-MM-DD HH:mm:ss',
   });
+
 
   //show/hide form
   $( "#form-toggle" ).click(function() {
@@ -239,4 +248,26 @@ $('#btn-store').click( function() {
       }
     });
   }
+  });
+
+  // $('.records-table thead tr th').hover(function() {
+  //    let text = $(this).data('text');
+  //     $(this).text(text + " [Sortare]");
+  //
+  //     $(this).mouseleave(function() {
+  //       $(this).text(text);
+  //     });
+  // });
+
+  // $('records-table thead tr th').mouseover(function) {
+  //     $(this).text("Sortare");
+  // }
+  //
+
+  $('body').change(function() {
+    if($('.orders-new tbody').children().length > 0) {
+      $('.orders-new').show();
+    } else {
+      $('.orders-new').hide();
+    }
   });
