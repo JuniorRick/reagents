@@ -139,6 +139,8 @@ $('.btn-cancel').click(function () {
   hidden = true;
 });
 
+
+//clear all selections
 $('.btn-clear').click(function() {
   $('tbody').find('tr').remove();
   $('#orders-table').hide();
@@ -190,8 +192,6 @@ $('.btn-select').click(function() {
     $('tbody').append($('<tr>')
       .attr('id', response.id + "" + i)
       .append($('<td>')
-        .text(i)
-      ).append($('<td>')
         .text(response.code)
       ).append($('<td>')
         .text(response.name)
@@ -209,6 +209,7 @@ $('.btn-select').click(function() {
       )
     );
 
+    $('#btn-store').text(`Eliberare (${ $('tbody').children().length })`);
     selectedReagents.push({id: response.id + "" + i, reagent_id: reagent_id,
       person_id: person_id, created_at:  $('#time').val() });
 
@@ -220,8 +221,12 @@ $('.btn-select').click(function() {
       selectedReagents = selectedReagents.filter(function(el) {
         return el.id !== id;
       });
+      var reagentsCounter = $('tbody').children().length
+      $('#btn-store').text(`Eliberare (${ reagentsCounter })`);
+      if(reagentsCounter == 0) {
+          $('.orders-new').hide();
+      }
     });
-
     $('.btn-select').prop('disabled', false);
 
   }, function() {

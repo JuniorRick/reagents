@@ -96,7 +96,7 @@
     <table  class="tablesorter records-table">
       <thead>
         <tr>
-          <th>Nr.</th>
+          {{-- <th>Nr.</th> --}}
           <th>Cod reagent</th>
           <th>Denumire reagent</th>
           <th>Persoana</th>
@@ -106,7 +106,7 @@
       </thead>
       <tfoot>
         <tr>
-          <th>Nr.</th>
+          {{-- <th>Nr.</th> --}}
           <th>Cod reagent</th>
           <th>Denumire reagent</th>
           <th>Persoana</th>
@@ -116,7 +116,7 @@
       </tfoot>
 
       <tbody>
-        {{-- selections goes here --}}
+        {{-- selected orders goes here --}}
       </tbody>
 
     </table>
