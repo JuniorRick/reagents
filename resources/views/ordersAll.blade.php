@@ -13,10 +13,12 @@
   <div class="container" style="max-width: 600px;">
 
 
-    @php
-      $counter = 0;
-    @endphp
+
+  @php
+    $counter = 0;
+  @endphp
   @if (isset($orders) && $orders->count() != 0)
+
     {{-- <div class="table-hint">
       Apasati pe antetul colonitei pentru sortearea dupa coloana
     </div> --}}
@@ -43,6 +45,7 @@
       </tfoot>
 
       <tbody>
+
         @foreach ($orders as $order)
           <tr>
             <td>{{ ++$counter }}</td>
@@ -80,6 +83,7 @@
                 </div>
               </div>
 
+            </td>
         @endforeach
 
       </tbody>

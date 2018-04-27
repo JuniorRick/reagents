@@ -133,7 +133,7 @@
               <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
               <a class="btn btn-primary btn-xs btn-clone" href="/reagent/{{ $reagent->id }}/edit">Clone</a>
               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-              data-target="#modal-delete{{ $reagent->id}}" style="margin-left: 5px;">Sterge</button>
+              data-target="#modal-delete{{ $reagent->id}}" style="margin-left: 5px;">Delete</button>
             </td>
 
 
