@@ -131,9 +131,33 @@
             <td>{{ $reagent->expire}}</td>
             <td class="clearfix" style="min-width: 150px;">
               <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
-              <a class="btn btn-danger btn-xs btn-delete" href="/reagent/{{ $reagent->id }}/delete">Delete</a>
               <a class="btn btn-primary btn-xs btn-clone" href="/reagent/{{ $reagent->id }}/edit">Clone</a>
+              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+              data-target="#modal-delete{{ $reagent->id}}" style="margin-left: 5px;">Sterge</button>
             </td>
+
+
+
+            <div id="modal-delete{{ $reagent->id }}" class="modal fade" role="dialog" style="z-index:9999;">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ $reagent->name }} </h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Confirmati stergerea reagentului <strong>{{ $reagent->code }}</strong> </p>
+                  </div>
+                  <div class="modal-footer">
+                    <a class="btn btn-danger btn-delete" href="/reagent/{{ $reagent->id }}/delete">Sterge</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </tr>
 
         @endforeach
