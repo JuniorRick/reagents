@@ -22,7 +22,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('reagent_id')
               ->references('id')
               ->on('reagents')
-              ->onDelete('cascade');
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
         });
     }
 
