@@ -34,6 +34,10 @@ $(document).ready(function() {
   $("#reagents-table").tablesorter();
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
+
+  //reset pickers
+  $('.selectpicker').selectpicker('val', 'default');
+
   //create date picker
   $('.datetimepicker').datetimepicker({
     format:'YYYY-MM-DD HH:mm:ss',
@@ -238,7 +242,7 @@ $('.btn-select').click(function() {
 
 //bulk store
 $('#btn-store').click( function() {
-    console.log('trying to store data...');
+    console.log('storing data...');
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -254,10 +258,17 @@ $('#btn-store').click( function() {
         console.log("success");
       },
       error: function(jqXHR, textStatus, errorThrown){
-        alert(textStatus, errorThrown);
+        console.log(textStatus + '-> ' + errorThrown);
       }
+    })
+    .done(function() {
+      location.reload();
+    })
+    .fail(function() {
+      alet("error");
     });
   }
+
   });
 
   // $('.records-table thead tr th').hover(function() {
