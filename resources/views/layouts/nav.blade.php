@@ -12,6 +12,9 @@
         <a href="/reagents">Reagenti</a>
         <a href="/orders">Eliberare Noua</a>
         <a href="/orders/all">Eliberari Totale</a>
+        <a href="/people">Persoane</a>
+        <a href="/producers">Producatori</a>
+        
         <div id="search-container">
           <input type="search" id="search" placeholder="Search">
         </div>

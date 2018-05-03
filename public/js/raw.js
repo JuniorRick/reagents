@@ -27,6 +27,8 @@ $("input#search").on("keydown keyup", function() {
 
 var hidden = true;
 var curReagentId = 0;
+var curProducerId = 0;
+var curPersonId = 0;
 var selectedReagents = [];
 
 $(document).ready(function() {
@@ -34,7 +36,7 @@ $(document).ready(function() {
   $("#reagents-table").tablesorter();
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
-
+  $('#btn-store').prop('disabled', false);
   //reset pickers
   $('.selectpicker').selectpicker('val', 'default');
 
@@ -42,7 +44,6 @@ $(document).ready(function() {
   $('.datetimepicker').datetimepicker({
     format:'YYYY-MM-DD HH:mm:ss',
   });
-
 
   //show/hide form
   $( "#form-toggle" ).click(function() {
@@ -68,7 +69,7 @@ $(".selectpicker").change(function() {
 });
 
 //submit the form
-$('input[type="submit"]').click(function(e) {
+$('#submit-reagent').click(function(e) {
   e.preventDefault();
   if( $('input[type="submit"]').val() == 'Actualizare') {
     $('.form-container').attr('action', `reagent/${curReagentId}/update`);
@@ -76,6 +77,21 @@ $('input[type="submit"]').click(function(e) {
   $('.form-container').submit();
 });
 
+$('#submit-person').click(function(e) {
+  e.preventDefault();
+  if( $('input[type="submit"]').val() == 'Actualizare') {
+    $('.form-container').attr('action', `person/${curPersonId}/update`);
+  }
+  $('.form-container').submit();
+});
+
+$('#submit-producer').click(function(e) {
+  e.preventDefault();
+  if( $('input[type="submit"]').val() == 'Actualizare') {
+    $('.form-container').attr('action', `producer/${curProducerId}/update`);
+  }
+  $('.form-container').submit();
+});
 
 //clone the record
 $('.btn-clone').click( function(event) {
@@ -109,6 +125,9 @@ $('.btn-edit').click( function(event) {
   event.preventDefault();
   let url = $(this).attr('href');
   curReagentId = url.split('/')[2];
+  curProducerId = url.split('/')[2];
+  curPersonId = url.split('/')[2];
+
   $.get(url).then(function(response) {
     $('.form-container').show();
     $('#form-toggle').text('Inchide formular');
@@ -181,8 +200,8 @@ var i = 0;
 //add reagent to the list
 $('.btn-select').click(function() {
   $('.btn-select').prop('disabled', true);
-
   const reagent_id = $('[name="reagent_id"]').val();
+  console.log(reagent_id);
   const url = `/reagent/${reagent_id}`;
     $('#orders-table').show();
     var person_id = $('#select-person').val();
@@ -242,6 +261,8 @@ $('.btn-select').click(function() {
 
 //bulk store
 $('#btn-store').click( function() {
+  $(this).prop('disabled', true);
+
     console.log('storing data...');
     $.ajaxSetup({
       headers: {

@@ -86,6 +86,8 @@
                     <a href="/reagents">Reagenti</a>
                     <a href="/orders">Eliberare noua</a>
                     <a href="/orders/all">Eliberari totale</a>
+                    <a href="/people">Persoane</a>
+                    <a href="/producers">Producatori</a>
 
                 </div>
             </div>

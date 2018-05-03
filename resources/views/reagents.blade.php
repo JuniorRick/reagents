@@ -86,7 +86,7 @@
       <br>
 
       <div class="text-center mt-4">
-          <input class="btn btn-primary" type="submit" value="Salvare">
+          <input class="btn btn-primary" type="submit" id="submit-reagents" value="Salvare">
           <button class="btn btn-default btn-cancel" type="button">Anulare</button>
       </div>
     </form>
@@ -127,15 +127,14 @@
             <td>{{ $reagent->receive_date}}</td>
             <td>{{ $reagent->code }}</td>
             <td>{{ $reagent->name }}</td>
-            <td>{{ $reagent->lot}}</td>
+            <td>@if($reagent->lot == '') - @else {{ $reagent->lot}} @endif</td>
             <td>{{ $reagent->expire}}</td>
             <td class="clearfix" style="min-width: 150px;">
               <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
               <a class="btn btn-primary btn-xs btn-clone" href="/reagent/{{ $reagent->id }}/edit">Clone</a>
               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-              data-target="#modal-delete{{ $reagent->id}}" style="margin-left: 5px;">Delete</button>
+              data-target="#modal-delete{{ $reagent->id}}" style="margin: 5px 0 0 5px;">Delete</button>
             </td>
-
 
 
             <div id="modal-delete{{ $reagent->id }}" class="modal fade" role="dialog" style="z-index:9999;">
@@ -148,7 +147,13 @@
                     <h4 class="modal-title">{{ $reagent->name }} </h4>
                   </div>
                   <div class="modal-body">
-                    <p>Confirmati stergerea reagentului <strong>{{ $reagent->code }}</strong> </p>
+                    <p>
+                      <h1 style="color: #f00">Atentie!</h1>
+                      <h2>La stergerea reagentului  <strong>{{ $reagent->code }}</strong>
+                        vor fi sterse toate referintele reagentului
+                        </h2>
+
+                      </p>
                   </div>
                   <div class="modal-footer">
                     <a class="btn btn-danger btn-delete" href="/reagent/{{ $reagent->id }}/delete">Sterge</a>

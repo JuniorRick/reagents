@@ -91,7 +91,6 @@
   </div>
 
 
-  @if (isset($orders) && $orders->count() != 0)
   <div id="orders-table" class="orders-new" style="display: none;">
     <table  class="tablesorter records-table">
       <thead>
@@ -125,11 +124,6 @@
       <button class="btn btn-lg btn-primary" id="btn-store" name="button">Eliberare</button>
     </div>
   </div>
-
-  @else
-    <h3 style="text-align:center;">Empty database</h3>
-  @endif
-
 
 
   </div>

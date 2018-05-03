@@ -22,6 +22,21 @@ Route::get('/', function () {
 //   });
 // });
 
+Route::get('/producers', 'ProducerController@index');
+Route::post('/producer/store', 'ProducerController@store');
+Route::post('/producer/{id}/update', 'ProducerController@update');
+
+Route::get('/producer/{id}/edit', 'ProducerController@edit');
+Route::get('/producer/{id}/delete', 'ProducerController@delete');
+
+
+Route::get('/people', 'PersonController@index');
+Route::post('/person/store', 'PersonController@store');
+Route::post('/person/{id}/update', 'PersonController@update');
+
+Route::get('/person/{id}/edit', 'PersonController@edit');
+Route::get('/person/{id}/delete', 'PersonController@delete');
+
 
 Route::get('/reagents', 'ReagentController@index');
 
