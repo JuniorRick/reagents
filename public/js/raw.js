@@ -258,14 +258,11 @@ $('#btn-store').click( function() {
         console.log("success");
       },
       error: function(jqXHR, textStatus, errorThrown){
-        console.log(textStatus + '-> ' + errorThrown);
+        console.log("warning");
       }
     })
     .done(function() {
       location.reload();
-    })
-    .fail(function() {
-      alet("error");
     });
   }
 
