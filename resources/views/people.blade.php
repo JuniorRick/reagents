@@ -73,7 +73,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ $person->name }} </h4>
+                    <h4 class="modal-title">{{ $person->fullname }} </h4>
                   </div>
                   <div class="modal-body">
                     <p>Confirmati stergerea persoanei <strong>{{ $person->fullname }}</strong> </p>
