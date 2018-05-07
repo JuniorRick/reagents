@@ -40,6 +40,9 @@ body {
   min-width: 150px;
 }
 
+.records-table tr th:first {
+  margin: -5px;
+}
 
  @media
  only screen and (max-width: 760px),

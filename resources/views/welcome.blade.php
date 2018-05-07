@@ -72,7 +72,7 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        {{-- <a href="{{ route('register') }}">Register</a> --}}
                     @endauth
                 </div>
             @endif
@@ -82,14 +82,14 @@
                   Centrul Republican de Diagnosticare Medicala
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="/reagents">Reagenti</a>
                     <a href="/orders">Eliberare noua</a>
                     <a href="/orders/all">Eliberari totale</a>
                     <a href="/people">Persoane</a>
                     <a href="/producers">Producatori</a>
 
-                </div>
+                </div> --}}
             </div>
         </div>
         <script type="text/javascript">
