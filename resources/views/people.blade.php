@@ -5,10 +5,11 @@
 
 <div id="page-wrap">
 
-  <div class="container-fluid" style="margin: 5px;">
-    <button class="btn" id="form-toggle" name="button">Deschide formular</button>
-  </div>
-
+  @can('create')
+    <div class="container-fluid" style="margin: 5px;">
+      <button class="btn" id="form-toggle" name="button">Deschide formular</button>
+    </div>
+  @endcan
 
   <div class="container" style="max-width: 600px;">
 
@@ -59,9 +60,13 @@
 
             <td>{{ $person->fullname }}</td>
             <td class="clearfix" style="min-width: 150px;">
-              <a class="btn btn-warning btn-xs btn-edit" href="/person/{{ $person->id }}/edit">Edit</a>
-              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-              data-target="#modal-delete{{ $person->id}}" style="margin: 5px 0 0 5px;">Delete</button>
+              @can('create')
+                <a class="btn btn-warning btn-xs btn-edit" href="/person/{{ $person->id }}/edit">Edit</a>
+              @endcan
+              @can('delete')
+                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                data-target="#modal-delete{{ $person->id}}" style="margin: 5px 0 0 5px;">Delete</button>
+              @endcan
             </td>
 
 

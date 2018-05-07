@@ -10,7 +10,9 @@
 
       <div id="demo-bar-buttons">
         <a href="/reagents">Reagenti</a>
-        <a href="/orders">Eliberare Noua</a>
+        @can('create')
+          <a href="/orders">Eliberare Noua</a>
+        @endcan
         <a href="/orders/all">Eliberari Totale</a>
         <a href="/people">Persoane</a>
         <a href="/producers">Producatori</a>

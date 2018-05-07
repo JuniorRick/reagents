@@ -21,7 +21,9 @@
 
                         <div class="links">
                             <a href="/reagents">Reagenti</a>
-                            <a href="/orders">Eliberare noua</a>
+                            @can('create')
+                              <a href="/orders">Eliberare noua</a>
+                            @endcan
                             <a href="/orders/all">Eliberari totale</a>
                             <a href="/people">Persoane</a>
                             <a href="/producers">Producatori</a>

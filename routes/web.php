@@ -12,16 +12,9 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
-
-//
-// Route::group(['middleware' => ['auth']], function()
-// {
-//   Route::get('/table', function() {
-//     return view('test');
-//   });
-// });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();

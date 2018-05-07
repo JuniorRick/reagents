@@ -14,6 +14,7 @@ class OrderController extends Controller
     }
 
     public function orders() {
+
       $orders = \App\Order::all();
 
       return view('ordersAll')->with('orders', $orders);

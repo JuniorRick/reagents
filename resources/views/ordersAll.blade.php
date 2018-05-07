@@ -55,8 +55,11 @@
             <td> {{ $order->created_at }} </td>
             <td class="clearfix" style="min-width: 50px;">
               {{-- <a class="btn btn-warning btn-xs btn-edit" href="/order/{{ $order->id }}/edit">Edit</a> --}}
-              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-              data-target="#modal-delete{{ $order->id}}" style="margin-left: 5px;">Sterge</button>
+
+              @can('delete')
+                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                data-target="#modal-delete{{ $order->id}}" style="margin-left: 5px;">Sterge</button>
+              @endcan
 
               <div id="modal-delete{{ $order->id }}" class="modal fade" role="dialog" style="z-index:9999;">
                 <div class="modal-dialog">
