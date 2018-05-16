@@ -125,11 +125,11 @@
 
           <tr>
             <td>{{ $reagent->producer() }}</td>
-            <td>{{ $reagent->receive_date}}</td>
+            <td>{{ explode(" ", $reagent->receive_date)[0]}}</td>
             <td>{{ $reagent->code }}</td>
             <td>{{ $reagent->name }}</td>
             <td>@if($reagent->lot == '') - @else {{ $reagent->lot}} @endif</td>
-            <td>{{ $reagent->expire}}</td>
+            <td>{{ explode(" ", $reagent->expire)[0]}}</td>
             <td class="clearfix" style="min-width: 150px;">
               @can('create')
                 <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>

@@ -17,11 +17,17 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('reagent_id')->unsigned();
             $table->integer('person_id');
+            $table->datetime('handed_date');
             $table->timestamps();
 
             $table->foreign('reagent_id')
               ->references('id')
               ->on('reagents')
+              ->onDelete('cascade');
+
+            $table->foreign('person_id')
+              ->references('id')
+              ->on('people')
               ->onDelete('cascade');
         });
     }

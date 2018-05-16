@@ -20,11 +20,16 @@ class OrderController extends Controller
       return view('ordersAll')->with('orders', $orders);
     }
 
+    //TODO
     public function store(Request $request) {
 
       $orders = $request->all();
         \App\Order::insert($orders);
 
+        foreach($orders as $order) {
+          \App\Reagent::find($order->reagent_id)
+          ->update('is_handed' => 1);
+        }
       return redirect()->back();
     }
 

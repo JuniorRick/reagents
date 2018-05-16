@@ -21,7 +21,13 @@ class CreateReagentsTable extends Migration
             $table->string('name');
             $table->string('lot')->nullable();
             $table->dateTime('expire');
+            $table->boolean('is_handed');
             $table->timestamps();
+
+            $table->foreign('producer_id')
+              ->references('id')
+              ->on('producers')
+              ->onDelete('cascade');
         });
     }
 

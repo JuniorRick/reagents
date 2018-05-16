@@ -201,15 +201,11 @@ var i = 0;
 $('.btn-select').click(function() {
   $('.btn-select').prop('disabled', true);
   const reagent_id = $('[name="reagent_id"]').val();
-  console.log(reagent_id);
   const url = `/reagent/${reagent_id}`;
-    $('#orders-table').show();
-    var person_id = $('#select-person').val();
+  $('#orders-table').show();
+  var person_id = $('#select-person').val();
 
-
-    i++;
-
-
+  i++;
   $.get(url).then(function(response) {
     // console.log(response);
     $('tbody').append($('<tr>')
@@ -231,6 +227,9 @@ $('.btn-select').click(function() {
         )
       )
     );
+
+    $(`#select-reagent option[value=${reagent_id}]`).remove();
+    $('#select-reagent').selectpicker('refresh');
 
     $('#btn-store').text(`Eliberare (${ $('tbody').children().length })`);
     selectedReagents.push({id: response.id + "" + i, reagent_id: reagent_id,
