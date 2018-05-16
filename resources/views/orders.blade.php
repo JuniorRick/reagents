@@ -68,25 +68,37 @@
             </select>
           </div>
 
-          <div class='col-sm-6'>
+          {{-- <div class='col-sm-6'>
             <div class='input-group date' id='datetimepicker2'>
               <label for="defaultExpire" class="grey-text">Data Eliberarii</label>
                 <input type='text' id="time" class="form-control datetimepicker" name="handed_date"/>
-                {{-- <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span> --}}
+
+            </div>
+          </div> --}}
+          <label for="defaultHanded" class="grey-text">Data Expirarii</label>
+          <div class="row" id="defaultHanded">
+            <div class="form-group">
+              <div class='col-sm-12'>
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' class="form-control datetimepicker" name="handed_date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+              </div>
             </div>
           </div>
+
 
         </div>
       </div>
 
       <br>
-
       <div class="text-center mt-4">
         <button class="btn btn-primary btn-select" type="button">Selectare</button>
           <button class="btn btn-default btn-clear" type="button">Anulare selectii</button>
       </div>
+
     </form>
   </div>
 

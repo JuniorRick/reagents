@@ -15,13 +15,13 @@ class CreateReagentsTable extends Migration
     {
         Schema::create('reagents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('producer_id');
+            $table->integer('producer_id')->unsigned();
             $table->dateTime('receive_date');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('lot')->nullable();
             $table->dateTime('expire');
-            $table->boolean('is_handed');
+            $table->boolean('is_handed')->default(0);
             $table->timestamps();
 
             $table->foreign('producer_id')

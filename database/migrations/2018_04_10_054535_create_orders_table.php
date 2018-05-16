@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('reagent_id')->unsigned();
-            $table->integer('person_id');
-            $table->datetime('handed_date');
+            $table->integer('person_id')->unsigned();
+            $table->date('handed_date');
             $table->timestamps();
 
             $table->foreign('reagent_id')

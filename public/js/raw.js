@@ -63,6 +63,10 @@ $(document).ready(function() {
 
 });
 
+// $('#form-reagents').click(function(e) {
+//   e.preventDefault();
+// });
+
 
 $(".selectpicker").change(function() {
     $('.btn-group.bootstrap-select.form-control').removeClass('open');
@@ -218,7 +222,7 @@ $('.btn-select').click(function() {
         .text($(`#select-person option[value="${person_id}"]`).text())
         .attr('val', $('#select-person').val())
       ).append($('<td>')
-        .text($('[name="hand"]').val())
+        .text($('[name="handed_date"]').val())
       ).append($('<td>')
         .append($('<button>')
           .text('Eliminare')
@@ -258,7 +262,7 @@ $('.btn-select').click(function() {
 });
 
 
-//bulk store
+//TODO bulk store
 $('#btn-store').click( function() {
   $(this).prop('disabled', true);
 
@@ -269,6 +273,8 @@ $('#btn-store').click( function() {
       }
     });
     for(let reagent of selectedReagents) {
+      console.log(reagent);
+      reagent.handed_date = $('[name="handed_date"]').val().split(' ')[0];
       delete reagent.id;
     $.ajax({
       url: '/orders/store',
@@ -278,7 +284,9 @@ $('#btn-store').click( function() {
         console.log("success");
       },
       error: function(jqXHR, textStatus, errorThrown){
-        console.log("warning");
+        console.log(textStatus + "  " + errorThrown);
+        console.log(this.data);
+
       }
     })
     .done(function() {

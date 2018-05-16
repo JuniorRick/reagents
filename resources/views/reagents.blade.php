@@ -14,7 +14,7 @@
   <div class="container" style="max-width: 600px;">
 
 
-    <form class="form-container" method="post" action="reagent/store/"
+    <form class="form-container" id="form-reagents" method="post" action="reagent/store/"
       style="display: none">
 
       {{ csrf_field() }}
