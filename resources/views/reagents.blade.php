@@ -154,11 +154,10 @@
                   <div class="modal-body">
                     <p>
                       <h1 style="color: #f00">Atentie!</h1>
-                      <h2>La stergerea reagentului  <strong>{{ $reagent->code }}</strong>
-                        vor fi sterse toate referintele reagentului
-                        </h2>
-
-                      </p>
+                      <h2>La stergerea inregistrarii  <strong>{{ $reagent->code }}</strong>
+                        vor fi sterse toate referintele acestei inregisrari
+                      </h2>
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <a class="btn btn-danger btn-delete" href="/reagent/{{ $reagent->id }}/delete">Sterge</a>

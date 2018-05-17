@@ -81,7 +81,12 @@
                     <h4 class="modal-title">{{ $person->fullname }} </h4>
                   </div>
                   <div class="modal-body">
-                    <p>Confirmati stergerea persoanei <strong>{{ $person->fullname }}</strong> </p>
+                    <p>
+                      <h1 style="color: #f00">Atentie!</h1>
+                      <h2>La stergerea inregistrarii  <strong>{{ $person->fullname }}</strong>
+                        vor fi sterse toate referintele acestei inregistrari
+                      </h2>
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <a class="btn btn-danger btn-delete" href="/person/{{ $person->id }}/delete">Sterge</a>

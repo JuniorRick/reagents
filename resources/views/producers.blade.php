@@ -80,7 +80,12 @@
                     <h4 class="modal-title">{{ $producer->name }} </h4>
                   </div>
                   <div class="modal-body">
-                    <p>Confirmati stergerea producatorui <strong>{{ $producer->name }}</strong> </p>
+                    <p>
+                      <h1 style="color: #f00">Atentie!</h1>
+                      <h2>La stergerea inregistrarii  <strong>{{ $producer->name }}</strong>
+                        vor fi sterse toate referintele acestei inregisrari
+                      </h2>
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <a class="btn btn-danger btn-delete" href="/producer/{{ $producer->id }}/delete">Sterge</a>

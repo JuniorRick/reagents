@@ -20,15 +20,14 @@ class OrderController extends Controller
       return view('ordersAll')->with('orders', $orders);
     }
 
-    //TODO store bulk 
+    //TODO store bulk
     public function store(Request $request) {
 
       $order = $request->all();
       \App\Order::insert($order);
 
-      $reagent = \App\Reagent::findOrFail($order->reagent_id);
-      $reagent->is_handed = true;
-      $reagent->save();
+      $reagent = \App\Reagent::findOrFail($request->reagent_id);
+      $reagent->update(['is_handed' => 1]);
 
       return redirect()->back();
     }

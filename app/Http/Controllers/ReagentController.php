@@ -14,7 +14,9 @@ class ReagentController extends Controller
     }
 
     public function reagents($producer_id) {
-      $reagents = \App\Reagent::where('producer_id', $producer_id)->get();
+      $reagents = \App\Reagent::where('producer_id', $producer_id)
+      ->where('is_handed', '0')
+      ->get();
 
       return response()->json($reagents);
     }
