@@ -36,7 +36,7 @@ $(document).ready(function() {
   $("#reagents-table").tablesorter();
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
-  $('#btn-store').prop('disabled', false);
+  $('#btn-store-orders').prop('disabled', false);
   //reset pickers
   $('.selectpicker').selectpicker('val', 'default');
 
@@ -235,7 +235,7 @@ $('.btn-select').click(function() {
     $(`#select-reagent option[value=${reagent_id}]`).remove();
     $('#select-reagent').selectpicker('refresh');
 
-    $('#btn-store').text(`Eliberare (${ $('tbody').children().length })`);
+    $('#btn-store-orders').text(`Eliberare (${ $('tbody').children().length })`);
     selectedReagents.push({id: response.id + "" + i, reagent_id: reagent_id,
       person_id: person_id, created_at:  $('#time').val() });
 
@@ -248,7 +248,7 @@ $('.btn-select').click(function() {
         return el.id !== id;
       });
       var reagentsCounter = $('tbody').children().length
-      $('#btn-store').text(`Eliberare (${ reagentsCounter })`);
+      $('#btn-store-orders').text(`Eliberare (${ reagentsCounter })`);
       if(reagentsCounter == 0) {
           $('.orders-new').hide();
       }
@@ -263,7 +263,7 @@ $('.btn-select').click(function() {
 
 
 //TODO bulk store
-$('#btn-store').click( function() {
+$('#btn-store-orders').click( function() {
   $(this).prop('disabled', true);
 
     console.log('storing data...');
@@ -272,43 +272,31 @@ $('#btn-store').click( function() {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+    var reagentsToStore = {};
+    var i = 0;
     for(let reagent of selectedReagents) {
-      console.log(reagent);
       reagent.handed_date = $('[name="handed_date"]').val().split(' ')[0];
       delete reagent.id;
+      reagentsToStore[i++] = reagent;
+    }
+    console.log(reagentsToStore);
     $.ajax({
-      url: '/orders/store',
+      url: '/orders/bulkstore',
       type: 'POST',
-      data: reagent,
+      data: reagentsToStore,
       success: function(response, textStatus, jqXHR) {
         console.log("success");
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.log(textStatus + "  " + errorThrown);
         console.log(this.data);
-
       }
     })
     .done(function() {
-      location.reload();
+      window.location.href=window.location.href;
     });
-  }
 
   });
-
-  // $('.records-table thead tr th').hover(function() {
-  //    let text = $(this).data('text');
-  //     $(this).text(text + " [Sortare]");
-  //
-  //     $(this).mouseleave(function() {
-  //       $(this).text(text);
-  //     });
-  // });
-
-  // $('records-table thead tr th').mouseover(function) {
-  //     $(this).text("Sortare");
-  // }
-  //
 
   $('body').change(function() {
     if($('.orders-new tbody').children().length > 0) {

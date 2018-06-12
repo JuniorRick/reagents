@@ -118,7 +118,7 @@
     </table>
 
     <div class="container-fluid" style="margin: 5px; text-align: center;">
-      <button class="btn btn-lg btn-primary" id="btn-store" name="button">Eliberare</button>
+      <button class="btn btn-lg btn-primary" id="btn-store-orders" name="button">Eliberare</button>
     </div>
   </div>
 

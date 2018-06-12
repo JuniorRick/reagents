@@ -31,7 +31,7 @@ class ReagentController extends Controller
 
       $reagent = $request->all();
       \App\Reagent::create($reagent);
-
+      \Session::flash('success', 'reagent ' . $request->code . ' adaugat cu success');
       return redirect()->back();
     }
 
@@ -44,14 +44,14 @@ class ReagentController extends Controller
     public function delete($id) {
       $reagent = \App\Reagent::findOrFail($id);
       $reagent->delete();
-
+      \Session::flash('delete', 'reagent ' . $reagent->code . ' a fost sters');
       return redirect()->back();
     }
 
     public function update($id, Request $request) {
       $reagent = \App\Reagent::findOrFail($id);
       $reagent->update($request->all());
-
+      \Session::flash('update', 'reagent ' . $reagent->code . ' a fost modificat');
       return redirect()->back();
     }
 }

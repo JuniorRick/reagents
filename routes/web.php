@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/orders/all', 'OrderController@orders');
 
   Route::post('/orders/store', 'OrderController@store');
+  Route::post('/orders/bulkstore', 'OrderController@bulkstore');
   Route::post('/order/{id}/update', 'OrderController@update');
 
   Route::get('/order/{id}/edit', 'OrderController@edit');

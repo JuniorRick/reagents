@@ -4,7 +4,7 @@
     <div id="demo-bar-inside">
 
       <h2 id="demo-bar-badge">
-        <a href="/home">Home</a>
+        <a href="/home"><i class="fa fa-home"></i></a>
       </h2>
 
 

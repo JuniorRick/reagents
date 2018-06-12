@@ -87,7 +87,7 @@
       <br>
 
       <div class="text-center mt-4">
-          <input class="btn btn-primary" type="submit" id="submit-reagents" value="Salvare">
+          <input class="btn btn-primary" type="submit" id="submit-reagent" value="Salvare">
           <button class="btn btn-default btn-cancel" type="button">Anulare</button>
       </div>
     </form>
@@ -105,6 +105,7 @@
           <th>Denumire</th>
           <th>Cod Lot</th>
           <th>Data expirarii</th>
+          <th>Stare</th>
           <th>Actiuni</th>
         </tr>
       </thead>
@@ -116,6 +117,7 @@
           <th>Denumire</th>
           <th>Cod Lot</th>
           <th>Data expirarii</th>
+          <th>Stare</th>
           <th>Actiuni</th>
         </tr>
       </tfoot>
@@ -130,6 +132,7 @@
             <td>{{ $reagent->name }}</td>
             <td>@if($reagent->lot == '') - @else {{ $reagent->lot}} @endif</td>
             <td>{{ explode(" ", $reagent->expire)[0]}}</td>
+            <td>{{ $reagent->is_handed ? 'Eliberat' :  'In stoc' }}</td>
             <td class="clearfix" style="min-width: 150px;">
               @can('create')
                 <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
