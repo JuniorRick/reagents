@@ -42,7 +42,7 @@ $(document).ready(function() {
 
   //create date picker
   $('.datetimepicker').datetimepicker({
-    format:'YYYY-MM-DD HH:mm:ss',
+    format:'YYYY-MM-DD',
   });
 
   //show/hide form

@@ -63,11 +63,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.1/js/jquery.tablesorter.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" charset="utf-8"></script>
+  <script src="{!! asset('js/jquery.url.js') !!}" charset="utf-8"></script>
   <script src="{!! asset('js/raw.js') !!}" charset="utf-8"></script>
   <script type="text/javascript">
     setTimeout( function() {
       $('.flash-message').hide();
     }, 6000);
+
+    $(function(){
+      var urlArr = jQuery.url.attr("source").split('/');
+      var $page = '/' + urlArr[urlArr.length - 1];
+      var $page2 = '/' + urlArr[urlArr.length - 2] + '/' + urlArr[urlArr.length - 1];
+      $('#demo-bar-buttons a').each(function(){
+          var $href = $(this).attr('href');
+          if ( ($href == $page) || ($href == $page2) || ($href == '') ) {
+              $(this).addClass('on');
+          } else {
+              $(this).removeClass('on');
+          }
+      });
+    });
   </script>
 </body>
 

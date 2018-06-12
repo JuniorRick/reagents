@@ -19,7 +19,7 @@
 
       {{ csrf_field() }}
       <br>
-      <p class="h4 text-center mb-4 add-new">Adaugati persoana</p>
+      <p class="h4 text-center mb-4 add-new">Adaugare/Editare persoane</p>
       <br>
 
       <!-- Default input email -->
@@ -78,7 +78,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ $person->fullname }} </h4>
+                    <h4 class="modal-title">Eliminare persoana</h4>
                   </div>
                   <div class="modal-body">
                     <p>

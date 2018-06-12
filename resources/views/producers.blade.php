@@ -18,7 +18,7 @@
 
       {{ csrf_field() }}
       <br>
-      <p class="h4 text-center mb-4 add-new">Adaugati producator</p>
+      <p class="h4 text-center mb-4 add-new">Adaugare/Editare producatori</p>
       <br>
 
       <!-- Default input email -->
@@ -77,7 +77,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ $producer->name }} </h4>
+                    <h4 class="modal-title">Eliminare producator</h4>
                   </div>
                   <div class="modal-body">
                     <p>

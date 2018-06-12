@@ -19,9 +19,9 @@
   @endphp
   @if (isset($orders) && $orders->count() != 0)
 
-    {{-- <div class="table-hint">
-      Apasati pe antetul colonitei pentru sortearea dupa coloana
-    </div> --}}
+    <h3 class="text-center">
+      Total reagenti eliberati
+    </h3>
     <table id="orders-table" class="tablesorter records-table">
       <thead>
         <tr >
@@ -68,14 +68,14 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title"> {{ $order->reagentTitle($order->reagent_id) }}</h4>
+                      <h4 class="modal-title"> Anulare eliberare</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Confirmati stergerea reagentului
+                      <h4>Confirmati stergerea eliberarii
                         <strong>
                           {{ $order->reagentCode($order->reagent_id) }}
                         </strong>
-                      </p>
+                      </h4>
                     </div>
                     <div class="modal-footer">
                       <a class="btn btn-danger btn-delete" href="/order/{{ $order->id }}/delete">Sterge</a>

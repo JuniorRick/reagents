@@ -19,7 +19,7 @@
 
       {{ csrf_field() }}
       <br>
-      <p class="h4 text-center mb-4 add-new">Adaugati o inregistrare noua</p>
+      <p class="h4 text-center mb-4 add-new">Adaugare/Editare reagenti</p>
       <br>
 
 
@@ -96,6 +96,10 @@
 
   @if (isset($reagents) && $reagents->count() != 0)
 
+    <h3 class="text-center">
+      Reagenti inregistrati
+    </h3>
+    
     <table id="reagents-table" class="tablesorter records-table">
       <thead>
         <tr>
@@ -103,9 +107,9 @@
           <th>Data primirii</th>
           <th>Cod intern</th>
           <th>Denumire</th>
-          <th>Cod Lot</th>
+          <th>Lot</th>
           <th>Data expirarii</th>
-          <th>Stare</th>
+          <th>Status</th>
           <th>Actiuni</th>
         </tr>
       </thead>
@@ -115,9 +119,9 @@
           <th>Data primirii</th>
           <th>Cod intern</th>
           <th>Denumire</th>
-          <th>Cod Lot</th>
+          <th>Lot</th>
           <th>Data expirarii</th>
-          <th>Stare</th>
+          <th>Status</th>
           <th>Actiuni</th>
         </tr>
       </tfoot>
@@ -152,12 +156,13 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ $reagent->name }} </h4>
+                    <h4 class="modal-title">Stergere ireversibila a inregistrarii</h4>
                   </div>
                   <div class="modal-body">
                     <p>
                       <h1 style="color: #f00">Atentie!</h1>
-                      <h2>La stergerea inregistrarii  <strong>{{ $reagent->code }}</strong>
+                      <h2>La stergerea inregistrarii
+                        <strong> {{ $reagent->code }}</strong>
                         vor fi sterse toate referintele acestei inregisrari
                       </h2>
                     </p>
