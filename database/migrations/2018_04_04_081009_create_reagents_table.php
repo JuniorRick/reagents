@@ -20,6 +20,8 @@ class CreateReagentsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('lot')->nullable();
+            $table->string('ref')->nullable();
+            $table->integer('quantity')->nullable();
             $table->dateTime('expire');
             $table->boolean('is_handed')->default(0);
             $table->timestamps();

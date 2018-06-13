@@ -14,6 +14,9 @@ class ProducerController extends Controller
 
     public function store(Request $request) {
 
+      $request->validate([
+        'name' => 'required|unique:producers',
+      ]);
       $producer = $request->all();
       \App\Producer::create($producer);
       \Session::flash('success', $request->name . ' adaugat cu success');

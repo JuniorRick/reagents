@@ -28,7 +28,13 @@ class ReagentController extends Controller
     }
 
     public function store(Request $request) {
-
+      $request->validate([
+        'producer_id' => 'bail|required|integer',
+        'receive_date' => 'required|date',
+        'code' => 'required|unique:reagents',
+        'name' => 'required',
+        'expire' => 'required|date',
+      ]);
       $reagent = $request->all();
       \App\Reagent::create($reagent);
       \Session::flash('success', 'reagent ' . $request->code . ' adaugat cu success');

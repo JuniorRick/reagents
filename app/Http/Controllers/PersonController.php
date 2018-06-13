@@ -14,6 +14,10 @@ class PersonController extends Controller
 
   public function store(Request $request) {
 
+    $request->validate([
+      'fullname' => 'required|unique:people',
+    ]);
+
     $person = $request->all();
     \App\Person::create($person);
 

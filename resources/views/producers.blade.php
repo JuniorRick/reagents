@@ -37,6 +37,8 @@
 
   @if (isset($producers) && $producers->count() != 0)
 
+    @include('layouts.error')
+
     <table id="producers-table" class="tablesorter records-table">
       <thead>
         <tr>

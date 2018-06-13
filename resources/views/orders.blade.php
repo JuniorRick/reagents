@@ -87,6 +87,7 @@
     </form>
   </div>
 
+  {{-- TODO display errors here --}}
 
   <div id="orders-table" class="orders-new" style="display: none;">
     <table  class="tablesorter records-table">

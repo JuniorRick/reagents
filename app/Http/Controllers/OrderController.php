@@ -38,8 +38,10 @@ class OrderController extends Controller
     public function bulkstore(Request $request) {
       $orders = $request->all();
       $file = fopen('file.txt','w');
+
       foreach($orders as $order) {
         $order = (object) $order;
+
         fwrite($file, gettype($order));
         $obj = new \App\Order;
         $obj->reagent_id = $order->reagent_id;

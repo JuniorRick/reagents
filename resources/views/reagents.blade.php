@@ -44,7 +44,7 @@
           <div class='col-sm-6'>
             <label for="datetimepicker1" class="grey-text">Data factura</label>
             <div class='input-group date' id='datetimepicker1'>
-                <input type='text' class="form-control datetimepicker" name="receive_date"/>
+                <input type='text' required class="form-control datetimepicker" name="receive_date"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -55,19 +55,25 @@
 
       <!-- Default input email -->
       <label for="defaultCodIntern" class="grey-text">Cod Intern</label>
-      <input type="text" id="defaultCodIntern" class="form-control" name="code">
+      <input type="text" id="defaultCodIntern" required class="form-control" name="code">
 
       {{-- <br> --}}
 
       <!-- Default input password -->
       <label for="defaultDenumire" class="grey-text">Denumire</label>
-      <input type="text" id="defaultDenumire" class="form-control" name="name">
+      <input type="text" id="defaultDenumire" required class="form-control" name="name">
 
       {{-- <br> --}}
 
       <!-- Default input password -->
-      <label for="defaultCodLot" class="grey-text">Cod Lot</label>
+      <label for="defaultCodLot" class="grey-text">Lot</label>
       <input type="text" id="defaultCodLot" class="form-control" name="lot">
+
+      <label for="defaultCodRef" class="grey-text">Ref</label>
+      <input type="text" id="defaultCodRef" class="form-control" name="ref">
+
+      <label for="defaultCodQty" class="grey-text">Cantitate (Teste / ml)</label>
+      <input type="text" id="defaultCodQty" class="form-control" name="quantity">
 
 
       <label for="defaultExpire" class="grey-text">Data Expirarii</label>
@@ -75,7 +81,7 @@
         <div class="form-group">
           <div class='col-sm-12'>
             <div class='input-group date' id='datetimepicker2'>
-                <input type='text' class="form-control datetimepicker" name="expire"/>
+                <input type='text' required class="form-control datetimepicker" name="expire"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -99,7 +105,9 @@
     <h3 class="text-center">
       Reagenti inregistrati
     </h3>
-    
+
+    @include('layouts.error')
+
     <table id="reagents-table" class="tablesorter records-table">
       <thead>
         <tr>
@@ -108,6 +116,8 @@
           <th>Cod intern</th>
           <th>Denumire</th>
           <th>Lot</th>
+          <th>Ref</th>
+          <th>Cantitate</th>
           <th>Data expirarii</th>
           <th>Status</th>
           <th>Actiuni</th>
@@ -120,6 +130,8 @@
           <th>Cod intern</th>
           <th>Denumire</th>
           <th>Lot</th>
+          <th>Ref</th>
+          <th>Cantitate</th>
           <th>Data expirarii</th>
           <th>Status</th>
           <th>Actiuni</th>
@@ -135,6 +147,8 @@
             <td>{{ $reagent->code }}</td>
             <td>{{ $reagent->name }}</td>
             <td>@if($reagent->lot == '') - @else {{ $reagent->lot}} @endif</td>
+            <td>@if($reagent->ref == '') - @else {{ $reagent->ref}} @endif</td>
+            <td>@if($reagent->quantity == '') - @else {{ $reagent->quantity}} @endif</td>
             <td>{{ explode(" ", $reagent->expire)[0]}}</td>
             <td>{{ $reagent->is_handed ? 'Eliberat' :  'In stoc' }}</td>
             <td class="clearfix" style="min-width: 150px;">

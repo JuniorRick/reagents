@@ -38,6 +38,9 @@
 
   @if (isset($people) && $people->count() != 0)
 
+    
+    @include('layouts.error')
+
     <table id="people-table" class="tablesorter records-table">
       <thead>
         <tr>
