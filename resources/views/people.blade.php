@@ -23,7 +23,7 @@
       <br>
 
       <!-- Default input email -->
-      <label for="defaultCodIntern" class="grey-text">Nume persoana</label>
+      <label for="defaultCodIntern" class="grey-text"><span class="red-star">*</span> Nume persoana</label>
       <input type="text" id="defaultFullname" class="form-control" name="fullname">
 
       <br>
@@ -38,7 +38,7 @@
 
   @if (isset($people) && $people->count() != 0)
 
-    
+
     @include('layouts.error')
 
     <table id="people-table" class="tablesorter records-table">

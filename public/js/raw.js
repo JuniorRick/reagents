@@ -5,6 +5,7 @@ $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     };
 });
 
+
 var allRows = $("tr");
 $("input#search").on("keydown keyup", function() {
   allRows.hide();
@@ -21,11 +22,13 @@ var selectedReagents = [];
 
 $(document).ready(function() {
   //enable table sorter
+
   $("#reagents-table").tablesorter();
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
   $('#btn-store-orders').prop('disabled', false);
   //reset pickers
+
   $('.selectpicker').selectpicker('val', 'default');
 
   //create date picker
@@ -33,6 +36,7 @@ $(document).ready(function() {
     format:'YYYY-MM-DD',
   });
 
+  lastReagentsVals();
   //show/hide form
   $( "#form-toggle" ).click(function() {
     if(hidden) {
@@ -48,7 +52,6 @@ $(document).ready(function() {
 
   //hide form after submit
   $('#display-reagent').hide();
-
 });
 
 // $('#form-reagents').click(function(e) {

@@ -24,7 +24,7 @@
       <div class="row">
         <div class="form-group">
           <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text">Persoana</label>
+            <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Persoana</label>
             <select class="form-control selectpicker" id="select-person" name="person_id" data-live-search="true">
               <option value="default" selected disabled>----- Selectati persona -----</option>
               @php
@@ -40,7 +40,7 @@
           </div>
 
           <div class='col-sm-6' id="display-producer">
-            <label for="selectpicker" class="grey-text">Producator</label>
+            <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Producator</label>
             <select class="form-control selectpicker" id="select-producer" data-live-search="true">
               <option value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
@@ -62,7 +62,7 @@
       <div class="row" id="display-reagent" style="display: none">
         <div class="form-group">
           <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text">Reagent</label>
+            <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Reagent</label>
             <select class="form-control selectpicker" id="select-reagent" name="reagent_id" data-live-search="true">
               {{-- <option value="default" selected disabled>----- Selectati reagent -----</option> --}}
             </select>
@@ -70,7 +70,7 @@
 
           <div class='col-sm-6'>
             <div class='input-group date' id='datetimepicker2'>
-              <label for="defaultExpire" class="grey-text">Data Eliberarii</label>
+              <label for="defaultExpire" class="grey-text"><span class="red-star">*</span> Data Eliberarii</label>
                 <input type='text' id="time" class="form-control datetimepicker" name="handed_date"/>
             </div>
           </div>

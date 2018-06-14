@@ -26,7 +26,7 @@
       <div class="row">
         <div class="form-group">
           <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text">Producator</label>
+            <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Producator</label>
             <select class="form-control selectpicker" id="selectpicker" name="producer_id" data-live-search="true">
               <option data-tokens="ketchup mustard" value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
@@ -42,26 +42,27 @@
           </div>
 
           <div class='col-sm-6'>
-            <label for="datetimepicker1" class="grey-text">Data factura</label>
+            <label for="datetimepicker1" class="grey-text"><span class="red-star">*</span> Data factura</label>
             <div class='input-group date' id='datetimepicker1'>
-                <input type='text' required class="form-control datetimepicker" name="receive_date"/>
+                <input type='text' class="form-control datetimepicker" name="receive_date"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
           </div>
+
         </div>
       </div>
 
       <!-- Default input email -->
-      <label for="defaultCodIntern" class="grey-text">Cod Intern</label>
-      <input type="text" id="defaultCodIntern" required class="form-control" name="code">
+      <label for="defaultCodIntern" class="grey-text"><span class="red-star">*</span> Cod Intern</label>
+      <input type="text" id="defaultCodIntern" class="form-control" name="code">
 
       {{-- <br> --}}
 
       <!-- Default input password -->
-      <label for="defaultDenumire" class="grey-text">Denumire</label>
-      <input type="text" id="defaultDenumire" required class="form-control" name="name">
+      <label for="defaultDenumire" class="grey-text"><span class="red-star">*</span> Denumire</label>
+      <input type="text" id="defaultDenumire" class="form-control" name="name">
 
       {{-- <br> --}}
 
@@ -76,12 +77,12 @@
       <input type="text" id="defaultCodQty" class="form-control" name="quantity">
 
 
-      <label for="defaultExpire" class="grey-text">Data Expirarii</label>
+      <label for="defaultExpire" class="grey-text"><span class="red-star">*</span> Data Expirarii</label>
       <div class="row" id="defaultExpire">
         <div class="form-group">
           <div class='col-sm-12'>
             <div class='input-group date' id='datetimepicker2'>
-                <input type='text' required class="form-control datetimepicker" name="expire"/>
+                <input type='text' class="form-control datetimepicker" name="expire"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -201,5 +202,4 @@
   @endif
 
   </div>
-
 @endsection

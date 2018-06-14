@@ -8,6 +8,9 @@ strong {
   color: rgba(214, 35, 17, 0.91);
 }
 
+.red-star {
+  color: #f00;
+}
 
 .btn-edit, .btn-delete, .btn-clone {
  float: left;

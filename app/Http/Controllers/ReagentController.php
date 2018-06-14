@@ -37,6 +37,12 @@ class ReagentController extends Controller
       ]);
       $reagent = $request->all();
       \App\Reagent::create($reagent);
+
+
+
+      \Session::flash('producer_id', $request->producer_id);
+
+      \Session::flash('receive_date', implode(" ", explode("-", $request->receive_date)));
       \Session::flash('success', 'reagent ' . $request->code . ' adaugat cu success');
       return redirect()->back();
     }

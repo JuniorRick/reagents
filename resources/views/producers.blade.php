@@ -22,7 +22,7 @@
       <br>
 
       <!-- Default input email -->
-      <label for="defaultCodIntern" class="grey-text">Nume producator</label>
+      <label for="defaultCodIntern" class="grey-text"><span class="red-star">*</span> Nume producator</label>
       <input type="text" id="defaultName" class="form-control" name="name">
 
       <br>
