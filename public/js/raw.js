@@ -66,6 +66,7 @@ $(".selectpicker").change(function() {
 //submit the form
 $('#submit-reagent').click(function(e) {
   e.preventDefault();
+  console.log('storing');
   if( $('input[type="submit"]').val() == 'Actualizare') {
     $('.form-container').attr('action', `reagent/${curReagentId}/update`);
   }
@@ -163,42 +164,76 @@ $('.btn-clear').click(function() {
   $('tbody').find('tr').remove();
   $('#orders-table').hide();
   selectedReagents = [];
+ $('#select-reagent').find('option').remove();
+ let url = `/reagents/` + $(this).val();
+ $.get(url).then(function(response) {
+   $('#select-reagent').append($('<option>', {
+     value: 'default',
+     text: '----- Selectati reagent -----',
+   }));
+   $.each(response, function (i, elem) {
+     $('#select-reagent').append($('<option>', {
+       dataTokens: elem.name,
+       value: elem.id,
+       text: `[${elem.code}] ${elem.name}`,
+     }));
+   });
+
+   $('.selectpicker').selectpicker('refresh');
+ }, function() {
+   console.log("error getting " + url);
+ });
 });
 
 
 //display reagents by producer on producer selected
-$('#select-producer').change(function() {
-  $('#display-reagent').show();
-  $('#select-reagent').find('option').remove();
-  let producer_id = $(this).val();
-  let url = `/reagents/${producer_id}`;
-  $.get(url).then(function(response) {
-    $('#select-reagent').append($('<option>', {
-      value: 'default',
-      text: '----- Selectati reagent -----',
-    }));
-    $.each(response, function (i, elem) {
-      $('#select-reagent').append($('<option>', {
-        dataTokens: elem.name,
-        value: elem.id,
-        text: `[${elem.code}] ${elem.name}`,
-      }));
-    });
+$('#select-producer').change(onSelectProducer);
 
-    $('.selectpicker').selectpicker('refresh');
-  }, function() {
-    console.log("error getting " + url);
-  });
-});
 var i = 0;
+
+function onSelectProducer() {
+    $('#display-reagent').show();
+    $('#select-reagent').find('option').remove();
+    let producer_id = $(this).val();
+    $('.btn-clear').val(producer_id);
+    let url = `/reagents/${producer_id}`;
+    $.get(url).then(function(response) {
+      $('#select-reagent').append($('<option>', {
+        value: 'default',
+        text: '----- Selectati reagent -----',
+      }));
+      $.each(response, function (i, elem) {
+        $('#select-reagent').append($('<option>', {
+          dataTokens: elem.name,
+          value: elem.id,
+          text: `[${elem.code}] ${elem.name}`,
+        }));
+      });
+
+      $('.selectpicker').selectpicker('refresh');
+    }, function() {
+      console.log("error getting " + url);
+    });
+}
 
 //add reagent to the list
 $('.btn-select').click(function() {
-  $('.btn-select').prop('disabled', true);
   const reagent_id = $('[name="reagent_id"]').val();
   const url = `/reagent/${reagent_id}`;
-  $('#orders-table').show();
   var person_id = $('#select-person').val();
+
+  console.log($('#select-producer').val());
+
+  if(person_id == null || $('[name="handed_date"]').val() == "" ||
+    $('#select-reagent').val() == 'default' || $('#select-producer').val() == null) {
+    $('.box-error').show();
+    $('.box-error').text("Toate campurile sunt oblicatorii");
+    return;
+  }
+
+
+  $('#orders-table').show();
+  $('.btn-select').prop('disabled', true);
 
   i++;
   $.get(url).then(function(response) {
@@ -269,6 +304,12 @@ $('#btn-store-orders').click( function() {
       reagent.handed_date = $('[name="handed_date"]').val().split(' ')[0];
       delete reagent.id;
       reagentsToStore[i++] = reagent;
+
+      if(reagent.person_id == "" || reagent.reagent_id == "" ||
+        reagent.handed_date == "") {
+          $('.box-error').show();
+          $('.box-error').text("Toate campurile sunt oblicatorii");
+        }
     }
     console.log(reagentsToStore);
     $.ajax({

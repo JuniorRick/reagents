@@ -8,8 +8,14 @@ strong {
   color: rgba(214, 35, 17, 0.91);
 }
 
-.red-star {
+.red-star, .box-error {
   color: #f00;
+}
+
+.box-error {
+  display: none;
+  padding: 10px;
+  background-color: rgb(255, 167, 167);
 }
 
 .btn-edit, .btn-delete, .btn-clone {

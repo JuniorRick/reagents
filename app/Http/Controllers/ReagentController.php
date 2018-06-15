@@ -34,8 +34,8 @@ class ReagentController extends Controller
         'code' => 'required|unique:reagents',
         'name' => 'required',
         'expire' => 'required|date',
-        'quantity' => 'integer'
       ]);
+
       $reagent = $request->all();
       \App\Reagent::create($reagent);
 

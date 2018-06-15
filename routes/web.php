@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['web', 'auth']], function() {
   Route::get('/producers', 'ProducerController@index');
   Route::post('/producer/store', 'ProducerController@store');
   Route::post('/producer/{id}/update', 'ProducerController@update');

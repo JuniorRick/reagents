@@ -28,7 +28,7 @@
           <div class='col-sm-6'>
             <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Producator</label>
             <select class="form-control selectpicker" id="selectpicker" name="producer_id" data-live-search="true">
-              <option data-tokens="ketchup mustard" value="default" selected disabled>----- Selectati producatorul -----</option>
+              <option value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
                $producers = \App\Producer::all();
               @endphp

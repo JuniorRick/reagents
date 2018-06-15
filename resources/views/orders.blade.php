@@ -12,6 +12,7 @@
 
   <div class="container" style="max-width: 600px;">
 
+    <div class="box-error"></div>
 
     <form method="post" action="order/store/">
 
