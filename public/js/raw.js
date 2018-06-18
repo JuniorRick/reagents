@@ -231,6 +231,11 @@ $('.btn-select').click(function() {
     $('#select-reagent').val() == 'default' || $('#select-producer').val() == null) {
     $('.box-error').show();
     $('.box-error').text("Toate campurile sunt oblicatorii");
+
+    setTimeout(function() {
+      $('.box-error').hide();
+    }, 4000);
+
     return;
   }
 
@@ -330,7 +335,9 @@ $('#btn-store-orders').click( function() {
         reagent.handed_date == "") {
           $('.box-error').show();
           $('.box-error').text("Toate campurile sunt oblicatorii");
+
         }
+
     }
 
     console.log(reagentsToStore);
