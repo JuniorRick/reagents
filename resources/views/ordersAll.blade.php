@@ -10,7 +10,7 @@
   </div> --}}
 
 
-  <div class="container" style="max-width: 600px;">
+  <div class="container">
 
 
 
@@ -27,7 +27,11 @@
         <tr >
           <th data-text="Nr.">Nr.</th>
           <th data-text="Cod reagent">Cod reagent</th>
+          <th data-text="Producator">Producator</th>
           <th data-text="Denumire reagent">Denumire reagent</th>
+          <th data-text="Ref">Ref</th>
+          <th data-text="Lot">Lot</th>
+          <th data-text="Data Expirarii">Data expirarii</th>
           <th data-text="Persona">Persona</th>
           <th data-text="Data eliberarii">Data eliberarii</th>
           <th data-text="Actiuni">Actiuni</th>
@@ -37,7 +41,11 @@
         <tr>
           <th>Nr.</th>
           <th>Cod reagent</th>
+          <th>Producator</th>
           <th>Denumire reagent</th>
+          <th>Ref</th>
+          <th>Lot</th>
+          <th>Data expirarii</th>
           <th>Persona</th>
           <th>Data eliberarii</th>
           <th>Actiuni</th>
@@ -50,7 +58,11 @@
           <tr>
             <td>{{ ++$counter }}</td>
             <td> {{ $order->reagentCode($order->reagent_id) }} </td>
+            <td> {{ $order->producer($order->reagent_id) }} </td>
             <td> {{ $order->reagentTitle($order->reagent_id) }} </td>
+            <td> {{ $order->reagentRef($order->reagent_id) }} </td>
+            <td> {{ $order->reagentLot($order->reagent_id) }} </td>
+            <td> {{ explode(" ", $order->reagentExpireDate($order->reagent_id))[0] }} </td>
             <td> {{ $order->person($order->person_id) }} </td>
             <td> {{ $order->handed_date }} </td>
             <td class="clearfix" style="min-width: 50px;">
