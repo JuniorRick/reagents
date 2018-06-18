@@ -161,11 +161,15 @@ $('.btn-cancel').click(function () {
 
 //clear all selections
 $('.btn-clear').click(function() {
+  cancelSelection(this);
+});
+
+function cancelSelection(self) {
   $('tbody').find('tr').remove();
   $('#orders-table').hide();
   selectedReagents = [];
  $('#select-reagent').find('option').remove();
- let url = `/reagents/` + $(this).val();
+ let url = `/reagents/` + $(self).val();
  $.get(url).then(function(response) {
    $('#select-reagent').append($('<option>', {
      value: 'default',
@@ -183,8 +187,7 @@ $('.btn-clear').click(function() {
  }, function() {
    console.log("error getting " + url);
  });
-});
-
+}
 
 //display reagents by producer on producer selected
 $('#select-producer').change(onSelectProducer);
@@ -222,7 +225,7 @@ $('.btn-select').click(function() {
   const url = `/reagent/${reagent_id}`;
   var person_id = $('#select-person').val();
 
-  console.log($('#select-producer').val());
+  // console.log($('#select-producer').val());
 
   if(person_id == null || $('[name="handed_date"]').val() == "" ||
     $('#select-reagent').val() == 'default' || $('#select-producer').val() == null) {
@@ -239,7 +242,7 @@ $('.btn-select').click(function() {
   $.get(url).then(function(response) {
     // console.log(response);
     $('tbody').append($('<tr>')
-      .attr('id', response.id + "" + i)
+      .attr('id', response.id + "_" + i)
       .append($('<td>')
         .text(response.code)
       ).append($('<td>')
@@ -253,7 +256,7 @@ $('.btn-select').click(function() {
         .append($('<button>')
           .text('Eliminare')
           .attr('class','btn btn-danger btn-xs btn-remove-selection')
-          .attr('value', response.id + "" + i)
+          .attr('value', response.id + "_" + i)
         )
       )
     );
@@ -269,6 +272,24 @@ $('.btn-select').click(function() {
     //eliminate reagent from the list
     $('.btn-remove-selection').on('click', function() {
       let id = $(this).val();
+      let reagent_id = id.split('_')[0];
+      console.log(reagent_id);
+      let url = `/reagent/${reagent_id}`;
+      $.get(url).then(function(response) {
+
+          $('#select-reagent').append($('<option>', {
+            dataTokens: response.name,
+            value: response.id,
+            text: `[${response.code}] ${response.name}`,
+          }));
+
+        $('.selectpicker').selectpicker('refresh');
+      }, function() {
+        console.log("error getting " + url);
+      });
+
+
+
       $(`#${id}`).remove();
       selectedReagents = selectedReagents.filter(function(el) {
         return el.id !== id;
@@ -311,6 +332,7 @@ $('#btn-store-orders').click( function() {
           $('.box-error').text("Toate campurile sunt oblicatorii");
         }
     }
+
     console.log(reagentsToStore);
     $.ajax({
       url: '/orders/bulkstore',

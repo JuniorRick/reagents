@@ -13,7 +13,7 @@
         @can('create')
           <a href="/orders">Eliberare Noua</a>
         @endcan
-        <a href="/orders/all">Eliberari Totale</a>
+        <a href="/orders/all">Reagent Laborator</a>
         <a href="/people">Persoane</a>
         <a href="/producers">Producatori</a>
 
