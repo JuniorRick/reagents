@@ -52,7 +52,7 @@
             <td> {{ $order->reagentCode($order->reagent_id) }} </td>
             <td> {{ $order->reagentTitle($order->reagent_id) }} </td>
             <td> {{ $order->person($order->person_id) }} </td>
-            <td> {{ $order->created_at }} </td>
+            <td> {{ $order->handed_date }} </td>
             <td class="clearfix" style="min-width: 50px;">
               {{-- <a class="btn btn-warning btn-xs btn-edit" href="/order/{{ $order->id }}/edit">Edit</a> --}}
 
