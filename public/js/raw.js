@@ -97,8 +97,7 @@ $('#submit-reagent').click(function(e) {
       errorFound = true;
     }
 
-    if( !Number.isInteger(parseInt($('#defaultQty').val())) &&
-      $('#defaultQty').val().length > 0) {
+    if( !Number.isInteger(parseInt($('#defaultQty').val()))) {
 
       $('#qty_text').css('color', 'red');
       $('.box-error').text("eroare de introducere a datelor");
@@ -336,10 +335,15 @@ $('.btn-select').click(function() {
 
     $(`#select-reagent option[value=${reagent_id}]`).remove();
     $('#select-reagent').selectpicker('refresh');
-
     $('#btn-store-orders').text(`Eliberare (${ $('tbody').children().length })`);
-    selectedReagents.push({id: response.id + "" + i, reagent_id: reagent_id,
-      person_id: person_id, created_at:  $('#time').val() });
+    selectedReagents.push({
+      id: response.id + "" + i,
+      reagent_id: reagent_id,
+      person_id: person_id,
+      handed_date:  $('#time').val().split(' ')[0],
+      order_quantity: response.quantity,
+      state: 0,
+     });
 
 
     //eliminate reagent from the list
@@ -395,7 +399,6 @@ $('#btn-store-orders').click( function() {
     var reagentsToStore = {};
     var i = 0;
     for(let reagent of selectedReagents) {
-      reagent.handed_date = $('[name="handed_date"]').val().split(' ')[0];
       delete reagent.id;
       reagentsToStore[i++] = reagent;
 
@@ -403,7 +406,6 @@ $('#btn-store-orders').click( function() {
         reagent.handed_date == "") {
           $('.box-error').show();
           $('.box-error').text("Toate campurile sunt oblicatorii");
-
         }
 
     }
@@ -418,7 +420,6 @@ $('#btn-store-orders').click( function() {
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.log(textStatus + "  " + errorThrown);
-        console.log(this.data);
       }
     })
     .done(function() {

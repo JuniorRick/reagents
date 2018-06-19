@@ -75,7 +75,6 @@
                 <input type='text' id="time" class="form-control datetimepicker" name="handed_date"/>
             </div>
           </div>
-
         </div>
       </div>
 

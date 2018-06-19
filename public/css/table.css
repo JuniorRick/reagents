@@ -102,7 +102,8 @@ body {
    #orders-table td:nth-of-type(7):before { content: "Data expirarii"; }
    #orders-table td:nth-of-type(8):before { content: "Personana"; }
    #orders-table td:nth-of-type(9):before { content: "Data eliberarii"; }
-   #orders-table td:nth-of-type(10):before { content: "Actiuni"; }
+   #orders-table td:nth-of-type(10):before { content: "Cantitate activa"; }
+   #orders-table td:nth-of-type(11):before { content: "Actiuni"; }
 
    #people-table td:nth-of-type(1):before { content: "Nume persoana"; }
    #people-table td:nth-of-type(2):before { content: "Actiuni"; }

@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('reagent_id')->unsigned();
             $table->integer('person_id')->unsigned();
+            $table->integer('order_quantity');
+            $table->integer('state')->default(0);
             $table->date('handed_date');
             $table->timestamps();
 

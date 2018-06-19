@@ -32,6 +32,9 @@ class Order extends Model
     public function reagentTitle($id) {
       return \App\Reagent::findOrFail($id)->name;
     }
+    public function reagentQty($id) {
+      return \App\Reagent::findOrFail($id)->quantity;
+    }
 
     public function person($id) {
       return \App\Person::findOrFail($id)->fullname;

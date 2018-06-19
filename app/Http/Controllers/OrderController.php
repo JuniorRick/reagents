@@ -44,8 +44,9 @@ class OrderController extends Controller
         $obj = new \App\Order;
         $obj->reagent_id = $order->reagent_id;
         $obj->person_id = $order->person_id;
-        $obj->created_at = $order->created_at;
         $obj->handed_date = $order->handed_date;
+        $obj->order_quantity = $order->order_quantity;
+        $obj->state = $order->state;
         $obj->save();
         $reagent = \App\Reagent::findOrFail($obj->reagent_id);
         $reagent->update(['is_handed' => 1]);

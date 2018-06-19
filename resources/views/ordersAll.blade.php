@@ -34,6 +34,9 @@
           <th data-text="Data Expirarii">Data expirarii</th>
           <th data-text="Persona">Persona</th>
           <th data-text="Data eliberarii">Data eliberarii</th>
+          <th data-text="Cantitate cutie">Cantitate cutie</th>
+          <th data-text="Cantitate activa">Cantitate activa</th>
+          <th data-text="Statut">Statut</th>
           <th data-text="Actiuni">Actiuni</th>
         </tr>
       </thead>
@@ -48,6 +51,9 @@
           <th>Data expirarii</th>
           <th>Persona</th>
           <th>Data eliberarii</th>
+          <th>Cantitate cutie</th>
+          <th>Cantitate activa</th>
+          <th>Statut</th>
           <th>Actiuni</th>
         </tr>
       </tfoot>
@@ -65,13 +71,22 @@
             <td> {{ explode(" ", $order->reagentExpireDate($order->reagent_id))[0] }} </td>
             <td> {{ $order->person($order->person_id) }} </td>
             <td> {{ $order->handed_date }} </td>
-            <td class="clearfix" style="min-width: 50px;">
+            <td> {{ $order->reagentQty($order->reagent_id) }} </td>
+            <td> {{ $order->order_quantity }} </td>
+            <td> {{ $order->state }} </td>
+            <td class="clearfix" style="min-width: 120px;">
               {{-- <a class="btn btn-warning btn-xs btn-edit" href="/order/{{ $order->id }}/edit">Edit</a> --}}
+
+
+            <span class="btn-group">
+              <button type="button" class="btn btn-details btn-xs" data-toggle="modal"
+              data-target="#modal-details{{ $order->id}}" style="margin-left: 5px;">Detalii</button>
 
               @can('delete')
                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                 data-target="#modal-delete{{ $order->id}}" style="margin-left: 5px;">Sterge</button>
               @endcan
+            </span>
 
               <div id="modal-delete{{ $order->id }}" class="modal fade" role="dialog" style="z-index:9999;">
                 <div class="modal-dialog">
@@ -91,6 +106,44 @@
                     </div>
                     <div class="modal-footer">
                       <a class="btn btn-danger btn-delete" href="/order/{{ $order->id }}/delete">Sterge</a>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div id="modal-details{{ $order->id }}" class="modal fade" role="dialog" style="z-index:9999;">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Detalii {{ $order->reagentCode($order->reagent_id) }}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h3>Cantitate disponibila {{ $order->order_quantity }} (teste / ml)</h3>
+                      <br>
+                      <label for="order_quantity" class="grey-text">
+                        Introduceti cantitatea extrasa din cutie
+                      </label>
+                      <span class="btn-group">
+                        <input type="text" id="order_quantity" class="form-control" name="code">
+                      </span>
+                      <br>
+                      <div class="reagents_details">
+                        <h5>Detalii cutie:</h5>
+                        <ul>
+                          <li>list 1</li>
+                          <li>list 2</li>
+                          <li>list 3</li>
+                          <li>list 4</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="btn btn-danger btn-details" href="/order/{{ $order->id }}/details">Utilizare</a>
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                   </div>
