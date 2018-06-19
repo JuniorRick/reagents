@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
 
 
@@ -13,6 +14,7 @@
 
   <div class="container" style="max-width: 600px;">
 
+    <div class="box-error"></div>
 
     <form class="form-container" id="form-reagents" method="post" action="reagent/store/"
       style="display: none">
@@ -26,7 +28,8 @@
       <div class="row">
         <div class="form-group">
           <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text"><span class="red-star">*</span> Producator</label>
+            <label for="selectpicker" class="grey-text"><span class="red-star">*</span>
+               <span id="producer_text">Producator</span></label>
             <select class="form-control selectpicker" id="selectpicker" name="producer_id" data-live-search="true">
               <option value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
@@ -42,7 +45,8 @@
           </div>
 
           <div class='col-sm-6'>
-            <label for="datetimepicker1" class="grey-text"><span class="red-star">*</span> Data factura</label>
+            <label for="datetimepicker1" class="grey-text"><span class="red-star">*</span>
+               <span id="receiveDate_text">Data factura</span></label>
             <div class='input-group date' id='datetimepicker1'>
                 <input type='text' class="form-control datetimepicker" name="receive_date"/>
                 <span class="input-group-addon">
@@ -55,13 +59,15 @@
       </div>
 
       <!-- Default input email -->
-      <label for="defaultCodIntern" class="grey-text"><span class="red-star">*</span> Cod Intern</label>
+      <label for="defaultCodIntern" class="grey-text"><span class="red-star">*</span>
+        <span id="code_text">Cod Intern</span></label>
       <input type="text" id="defaultCodIntern" class="form-control" name="code">
 
       {{-- <br> --}}
 
       <!-- Default input password -->
-      <label for="defaultDenumire" class="grey-text"><span class="red-star">*</span> Denumire</label>
+      <label for="defaultDenumire" class="grey-text"><span class="red-star">*</span>
+        <span id="name_text">Denumire</span></label>
       <input type="text" id="defaultDenumire" class="form-control" name="name">
 
       {{-- <br> --}}
@@ -77,7 +83,8 @@
       <input type="text" id="defaultCodQty" class="form-control" name="quantity">
 
 
-      <label for="defaultExpire" class="grey-text"><span class="red-star">*</span> Data Expirarii</label>
+      <label for="defaultExpire" class="grey-text"><span class="red-star">*</span>
+        <span id="expireDate_text">Data Expirarii</span></label>
       <div class="row" id="defaultExpire">
         <div class="form-group">
           <div class='col-sm-12'>

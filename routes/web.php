@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
 
   Route::get('/reagents', 'ReagentController@index');
+  Route::get('/reagents/all', 'ReagentController@reagentsJSON');
 
   Route::get('/reagent/{id}', 'ReagentController@reagent');
   Route::get('/reagents/{id}', 'ReagentController@reagents');

@@ -21,6 +21,12 @@ class ReagentController extends Controller
       return response()->json($reagents);
     }
 
+    public function reagentsJSON() {
+      $reagents = \App\Reagent::all();
+
+      return response()->json($reagents);
+    }
+
     public function reagent($id) {
       $reagent = \App\Reagent::findOrFail($id);
 

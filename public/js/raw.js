@@ -63,15 +63,72 @@ $(".selectpicker").change(function() {
     $('.btn-group.bootstrap-select.form-control').removeClass('open');
 });
 
-//submit the form
+
+$('#defaultCodIntern').on('input', function() {
+  $('#defaultCodIntern').css('color', '#000');
+});
+//submit the form to add new reagent
 $('#submit-reagent').click(function(e) {
   e.preventDefault();
-  console.log('storing');
-  if( $('input[type="submit"]').val() == 'Actualizare') {
-    $('.form-container').attr('action', `reagent/${curReagentId}/update`);
-  }
-  $('.form-container').submit();
-});
+  $('span').css('color', '#000');
+
+  var url =  `/reagents/all`;
+  $.get(url).then(function(response) {
+    if( $('input[type="submit"]').val() == 'Actualizare') {
+      $('.form-container').attr('action', `reagent/${curReagentId}/update`);
+    }
+
+    var errorFound = false;
+    if($('#selectpicker').find("option:selected").val() == 'default') {
+      $('#producer_text').css('color', "red");
+      errorFound = true;
+    }
+    if($("#datetimepicker1").find("input").val().length == 0) {
+      $('#receiveDate_text').css('color', 'red');
+      $('.box-error').text("eroare de introducere a datelor");
+      errorFound = true;
+    }
+
+    if($('#defaultDenumire').val().length == 0) {
+      $('.box-error').text("eroare de introducere a datelor");
+      $('#name_text').css('color', 'red');
+      errorFound = true;
+    }
+
+    if($("#datetimepicker2").find("input").val().length == 0) {
+      $('#expireDate_text').css('color', 'red');
+      $('.box-error').text("eroare de introducere a datelor");
+      errorFound = true;
+    }
+
+      if($('#defaultCodIntern').val().length == 0) {
+        $('.box-error').text("eroare de introducere a datelor");
+        $('#code_text').css('color', 'red');
+        errorFound = true;
+      } else {
+        $.each(response, function(i, elem) {
+          if(elem.code == $('#defaultCodIntern').val()) {
+            $('#defaultCodIntern').css('color', 'red');
+            $('#code_text').css('color', 'red');
+            errorFound = true;
+            $('.box-error').html("eroare de introducere a datelor"
+            + "<br>cod intern trebuie sa fie unic");
+          }
+        });
+      }
+      if(errorFound) {
+        $('.box-error').show();
+        return;
+      } else {
+        $('.form-container').submit();
+      }
+  }, function() {
+  console.log("error getting " + url);
+  });
+
+
+
+  });
 
 $('#submit-person').click(function(e) {
   e.preventDefault();
