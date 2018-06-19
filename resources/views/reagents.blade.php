@@ -79,8 +79,9 @@
       <label for="defaultCodRef" class="grey-text">Ref</label>
       <input type="text" id="defaultCodRef" class="form-control" name="ref">
 
-      <label for="defaultCodQty" class="grey-text">Cantitate (Teste / ml)</label>
-      <input type="text" id="defaultCodQty" class="form-control" name="quantity">
+      <label for="defaultQty" class="grey-text">
+        <span id="qty_text">Cantitate (Teste / ml)</span></label>
+      <input type="text" id="defaultQty" class="form-control" name="quantity">
 
 
       <label for="defaultExpire" class="grey-text"><span class="red-star">*</span>
@@ -127,7 +128,7 @@
           <th>Ref</th>
           <th>Cantitate</th>
           <th>Data expirarii</th>
-          <th>Status</th>
+          <th>Statut</th>
           <th>Actiuni</th>
         </tr>
       </thead>
@@ -141,7 +142,7 @@
           <th>Ref</th>
           <th>Cantitate</th>
           <th>Data expirarii</th>
-          <th>Status</th>
+          <th>Statut</th>
           <th>Actiuni</th>
         </tr>
       </tfoot>

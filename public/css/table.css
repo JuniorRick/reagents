@@ -86,16 +86,23 @@ body {
    #reagents-table td:nth-of-type(2):before { content: "Data primirii"; }
    #reagents-table td:nth-of-type(3):before { content: "Cod intern"; }
    #reagents-table td:nth-of-type(4):before { content: "Denumire"; }
-   #reagents-table td:nth-of-type(5):before { content: "Cod Lot"; }
-   #reagents-table td:nth-of-type(6):before { content: "Data expirarii"; }
-   #reagents-table td:nth-of-type(7):before { content: "Actiuni"; }
+   #reagents-table td:nth-of-type(5):before { content: "Lot"; }
+   #reagents-table td:nth-of-type(6):before { content: "Ref"; }
+   #reagents-table td:nth-of-type(7):before { content: "Cantitate"; }
+   #reagents-table td:nth-of-type(8):before { content: "Data expirarii"; }
+   #reagents-table td:nth-of-type(9):before { content: "Statut"; }
+   #reagents-table td:nth-of-type(10):before { content: "Actiuni"; }
 
    #orders-table td:nth-of-type(1):before { content: "Nr"; }
    #orders-table td:nth-of-type(2):before { content: "Cod intern"; }
-   #orders-table td:nth-of-type(3):before { content: "Denumire"; }
-   #orders-table td:nth-of-type(4):before { content: "Personana"; }
-   #orders-table td:nth-of-type(5):before { content: "Data eliberarii"; }
-   #orders-table td:nth-of-type(6):before { content: "Actiuni"; }
+   #orders-table td:nth-of-type(3):before { content: "Producator"; }
+   #orders-table td:nth-of-type(4):before { content: "Denumire reagent"; }
+   #orders-table td:nth-of-type(5):before { content: "Ref"; }
+   #orders-table td:nth-of-type(6):before { content: "Lot"; }
+   #orders-table td:nth-of-type(7):before { content: "Data expirarii"; }
+   #orders-table td:nth-of-type(8):before { content: "Personana"; }
+   #orders-table td:nth-of-type(9):before { content: "Data eliberarii"; }
+   #orders-table td:nth-of-type(10):before { content: "Actiuni"; }
 
    #people-table td:nth-of-type(1):before { content: "Nume persoana"; }
    #people-table td:nth-of-type(2):before { content: "Actiuni"; }

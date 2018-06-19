@@ -64,9 +64,9 @@ $(".selectpicker").change(function() {
 });
 
 
-$('#defaultCodIntern').on('input', function() {
-  $('#defaultCodIntern').css('color', '#000');
-});
+// $('#defaultCodIntern').on('input', function() {
+//   $('#defaultCodIntern').css('color', '#000');
+// });
 //submit the form to add new reagent
 $('#submit-reagent').click(function(e) {
   e.preventDefault();
@@ -79,7 +79,9 @@ $('#submit-reagent').click(function(e) {
     }
 
     var errorFound = false;
-    if($('#selectpicker').find("option:selected").val() == 'default') {
+    if($('#selectpicker').find("option:selected").val() == 'default' ||
+      $('#selectpicker').find("option:selected").val().length == 0) {
+
       $('#producer_text').css('color', "red");
       errorFound = true;
     }
@@ -95,6 +97,14 @@ $('#submit-reagent').click(function(e) {
       errorFound = true;
     }
 
+    if( !Number.isInteger(parseInt($('#defaultQty').val())) &&
+      $('#defaultQty').val().length > 0) {
+
+      $('#qty_text').css('color', 'red');
+      $('.box-error').text("eroare de introducere a datelor");
+      errorFound = true;
+    }
+
     if($("#datetimepicker2").find("input").val().length == 0) {
       $('#expireDate_text').css('color', 'red');
       $('.box-error').text("eroare de introducere a datelor");
@@ -107,8 +117,9 @@ $('#submit-reagent').click(function(e) {
         errorFound = true;
       } else {
         $.each(response, function(i, elem) {
-          if(elem.code == $('#defaultCodIntern').val()) {
-            $('#defaultCodIntern').css('color', 'red');
+          if(elem.code == $('#defaultCodIntern').val() &&
+            $('input[type="submit"]').val() != 'Actualizare') {
+            // $('#defaultCodIntern').css('color', 'red');
             $('#code_text').css('color', 'red');
             errorFound = true;
             $('.box-error').html("eroare de introducere a datelor"
