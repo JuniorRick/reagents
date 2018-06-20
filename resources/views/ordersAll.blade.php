@@ -61,7 +61,7 @@
       <tbody>
 
         @foreach ($orders as $order)
-          <tr>
+          <tr style="background: {{ $order->state == 1 ? '#e7ee9b' : ($order->state == 2 ? '#ed9999' : '#c2c1c1') }}">
             <td>{{ ++$counter }}</td>
             <td> {{ $order->reagentCode($order->reagent_id) }} </td>
             <td> {{ $order->producer($order->reagent_id) }} </td>
