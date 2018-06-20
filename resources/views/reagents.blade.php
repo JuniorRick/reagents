@@ -100,16 +100,15 @@
       </div>
 
       <br>
-
       <div class="text-center mt-4">
-          <input class="btn btn-primary" type="submit" id="submit-reagent" value="Salvare">
-          <button class="btn btn-default btn-cancel" type="button">Anulare</button>
+        <input class="btn btn-primary" type="submit" id="submit-reagent" value="Salvare">
+        <button class="btn btn-default btn-cancel" type="button">Anulare</button>
       </div>
     </form>
   </div>
 
 
-  @if (isset($reagents) && $reagents->count() != 0)
+  @if (isset($reagents) && $reagents->count() > 0)
 
     <h3 class="text-center">
       Reagenti inregistrati

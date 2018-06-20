@@ -61,5 +61,10 @@ Route::group(['middleware' => ['web', 'auth']], function() {
   Route::get('/order/{id}/delete', 'OrderController@delete');
 
   Route::get('/reports/{id}', 'ReportController@reports');
+  Route::post('/reports/store', 'ReportController@store');
 
+  Route::get('/report/{id}/edit', 'ReportController@edit');
+  Route::post('/report/{id}/update', 'ReportController@update');
+
+  Route::get('/report/{id}/delete', 'ReportController@delete');
 });

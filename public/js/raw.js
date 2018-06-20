@@ -18,6 +18,7 @@ var hidden = true;
 var curReagentId = 0;
 var curProducerId = 0;
 var curPersonId = 0;
+var curReportId = 0;
 var selectedReagents = [];
 
 $(document).ready(function() {
@@ -156,6 +157,14 @@ $('#submit-producer').click(function(e) {
   $('.form-container').submit();
 });
 
+$('#submit-report').click(function(e) {
+  e.preventDefault();
+  if( $('input[type="submit"]').val() == 'Actualizare') {
+    $('.form-container').attr('action', `/report/${curReportId}/update`);
+  }
+  $('.form-container').submit();
+});
+
 //clone the record
 $('.btn-clone').click( function(event) {
   event.preventDefault();
@@ -190,6 +199,7 @@ $('.btn-edit').click( function(event) {
   curReagentId = url.split('/')[2];
   curProducerId = url.split('/')[2];
   curPersonId = url.split('/')[2];
+  curReportId = url.split('/')[2];
 
   $.get(url).then(function(response) {
     $('.form-container').show();
@@ -216,11 +226,11 @@ $('.btn-edit').click( function(event) {
 //refresh form
 $('.btn-cancel').click(function () {
   // location.reload();
-  $('#selectpicker').val('default');
-  $('#selectpicker').selectpicker('refresh');
+  $('.selectpicker').val('default');
+  $('.selectpicker').selectpicker('refresh');
   $('.form-container')[0].reset();
   $('input[type="submit"]').val('Salvare');
-  $('.form-container').hide();
+  // $('.form-container').hide();
   $('#form-toggle').text('Deschide formular');
   hidden = true;
 });

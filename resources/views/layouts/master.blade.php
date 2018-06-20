@@ -37,6 +37,10 @@
       background: #f2ff5e;
       color: #000;
     }
+    .error {
+      background: #f00;
+      color: #000;
+    }
   </style>
 <body>
 
@@ -52,6 +56,10 @@
     @elseif (\Session::has('update'))
       <div class="flash-message update">
         {{ \Session::get('update') }}
+      </div>
+    @elseif (\Session::has('error'))
+      <div class="flash-message error">
+        {{ \Session::get('error') }}
       </div>
     @endif
 
