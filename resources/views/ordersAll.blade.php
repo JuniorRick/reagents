@@ -73,14 +73,13 @@
             <td> {{ $order->handed_date }} </td>
             <td> {{ $order->reagentQty($order->reagent_id) }} </td>
             <td> {{ $order->order_quantity }} </td>
-            <td> {{ $order->state }} </td>
+            <td> {{ $order->state == 0 ? 'Nou ' : ($order->state == 1 ? 'Utilizat ' : 'Finisat ') }} </td>
             <td class="clearfix" style="min-width: 120px;">
-              {{-- <a class="btn btn-warning btn-xs btn-edit" href="/order/{{ $order->id }}/edit">Edit</a> --}}
 
 
             <span class="btn-group">
-              <button type="button" class="btn btn-details btn-xs" data-toggle="modal"
-              data-target="#modal-details{{ $order->id}}" style="margin-left: 5px;">Detalii</button>
+
+              <a href="/reports/{{ $order->id }}" class="btn btn-primary btn-xs" style="margin-left: 5px;"">Detalii</a>
 
               @can('delete')
                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
@@ -115,41 +114,6 @@
 
               <div id="modal-details{{ $order->id }}" class="modal fade" role="dialog" style="z-index:9999;">
                 <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Detalii {{ $order->reagentCode($order->reagent_id) }}</h4>
-                    </div>
-                    <div class="modal-body">
-                      <h3>Cantitate disponibila {{ $order->order_quantity }} (teste / ml)</h3>
-                      <br>
-                      <label for="order_quantity" class="grey-text">
-                        Introduceti cantitatea extrasa din cutie
-                      </label>
-                      <span class="btn-group">
-                        <input type="text" id="order_quantity" class="form-control" name="code">
-                      </span>
-                      <br>
-                      <div class="reagents_details">
-                        <h5>Detalii cutie:</h5>
-                        <ul>
-                          <li>list 1</li>
-                          <li>list 2</li>
-                          <li>list 3</li>
-                          <li>list 4</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a class="btn btn-danger btn-details" href="/order/{{ $order->id }}/details">Utilizare</a>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
 
             </td>
         @endforeach
