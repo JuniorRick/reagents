@@ -24,8 +24,7 @@ var selectedReagents = [];
 $(document).ready(function() {
 
   if(typeof sort_by !== 'undefined') {
-    console.log(sort_by);
-        $("#reagents-table").tablesorter( {sortList: [[0,0], [sort_by,0]]});
+    $("#reagents-table").tablesorter( {sortList: [[0,0], [sort_by,0]]});
   }
 
   //enable table sorter
