@@ -22,15 +22,20 @@ var curReportId = 0;
 var selectedReagents = [];
 
 $(document).ready(function() {
-  //enable table sorter
 
-  $("#reagents-table").tablesorter( {sortList: [[0,0], [7,0]]});
+  if(typeof sort_by !== 'undefined') {
+    console.log(sort_by);
+        $("#reagents-table").tablesorter( {sortList: [[0,0], [sort_by,0]]});
+  }
+
+  //enable table sorter
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
   $('#btn-store-orders').prop('disabled', false);
   //reset pickers
 
-  $('.selectpicker').selectpicker('val', 'default');
+  $('#select_person').selectpicker('val', 'default');
+  $('#select_producer').selectpicker('val', 'default');
 
   //create date picker
   $('.datetimepicker').datetimepicker({
@@ -50,24 +55,15 @@ $(document).ready(function() {
       $('#form-toggle').text('Deschide formular');
     }
   });
-
   //hide form after submit
   $('#display-reagent').hide();
 });
-
-// $('#form-reagents').click(function(e) {
-//   e.preventDefault();
-// });
-
 
 $(".selectpicker").change(function() {
     $('.btn-group.bootstrap-select.form-control').removeClass('open');
 });
 
 
-// $('#defaultCodIntern').on('input', function() {
-//   $('#defaultCodIntern').css('color', '#000');
-// });
 //submit the form to add new reagent
 $('#submit-reagent').click(function(e) {
   e.preventDefault();
@@ -400,7 +396,6 @@ $('.btn-select').click(function() {
 $('#btn-store-orders').click( function() {
   $(this).prop('disabled', true);
 
-    console.log('storing data...');
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

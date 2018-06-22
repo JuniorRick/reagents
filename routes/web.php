@@ -67,4 +67,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
   Route::post('/report/{id}/update', 'ReportController@update');
 
   Route::get('/report/{id}/delete', 'ReportController@delete');
+
+  Route::get('/settings', 'SettingController@index');
+  Route::post('/settings/save', 'SettingController@save');
 });

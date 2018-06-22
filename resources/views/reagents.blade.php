@@ -28,9 +28,9 @@
       <div class="row">
         <div class="form-group">
           <div class='col-sm-6'>
-            <label for="selectpicker" class="grey-text"><span class="red-star">*</span>
+            <label for="select_producer" class="grey-text"><span class="red-star">*</span>
                <span id="producer_text">Producator</span></label>
-            <select class="form-control selectpicker" id="selectpicker" name="producer_id" data-live-search="true">
+            <select class="form-control selectpicker" id="select_producer" name="producer_id" data-live-search="true">
               <option value="default" selected disabled>----- Selectati producatorul -----</option>
               @php
                $producers = \App\Producer::all();
@@ -152,10 +152,10 @@
           <?php
             $today = Carbon\Carbon::today();
             $expire = new Carbon\Carbon($reagent->expire);
+            $settings = \App\Setting::first();
           ?>
-
           <tr style="background:
-          {{ $expire < $today ? '#ffc6c6' : ($expire->diffInDays($today) < 30 ? '#fffde9' : '#fff')}}">
+          {{ $expire < $today ? $settings->reagent_expired_color : ($expire->diffInDays($today) < 30 ? $settings->reagent_expiring_color : '#fff')}}">
             <td>{{ $reagent->producer() }}</td>
             <td>{{ explode(" ", $reagent->receive_date)[0]}}</td>
             <td>{{ $reagent->code }}</td>
@@ -215,4 +215,8 @@
   @endif
 
   </div>
+
+  <script type="text/javascript">
+    var sort_by = {{ \App\Setting::first()->reagent_sort_by }}
+  </script>
 @endsection

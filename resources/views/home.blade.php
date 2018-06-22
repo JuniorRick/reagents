@@ -28,6 +28,9 @@
                             <a href="/people">Persoane</a>
                             <a href="/producers">Producatori</a>
 
+                            @if(Auth::user()->hasRole('admin'))
+                              <a href="/settings">Setari</a>
+                            @endif
                         </div>
                     </div>
                 </div>
