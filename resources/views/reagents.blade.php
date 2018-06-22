@@ -149,7 +149,13 @@
       <tbody>
         @foreach ($reagents as $reagent)
 
-          <tr>
+          <?php
+            $today = Carbon\Carbon::today();
+            $expire = new Carbon\Carbon($reagent->expire);
+          ?>
+
+          <tr style="background:
+          {{ $expire < $today ? '#ffc6c6' : ($expire->diffInDays($today) < 30 ? '#fffde9' : '#fff')}}">
             <td>{{ $reagent->producer() }}</td>
             <td>{{ explode(" ", $reagent->receive_date)[0]}}</td>
             <td>{{ $reagent->code }}</td>

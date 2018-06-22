@@ -24,7 +24,7 @@ var selectedReagents = [];
 $(document).ready(function() {
   //enable table sorter
 
-  $("#reagents-table").tablesorter();
+  $("#reagents-table").tablesorter( {sortList: [[0,0], [7,0]]});
   $("#orders-table").tablesorter();
   $('.orders-new').hide();
   $('#btn-store-orders').prop('disabled', false);
