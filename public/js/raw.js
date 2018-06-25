@@ -239,6 +239,7 @@ $('.btn-cancel').click(function () {
   // $('.form-container').hide();
   $('#form-toggle').text('Deschide formular');
   hidden = true;
+  $('.form-container').hide();
 });
 
 

@@ -60,7 +60,7 @@
 
                 <div class="form-group row">
                   <label for="select_role" class="col-md-4 col-form-label text-md-right grey-text">
-                    <span id="role_text">Producator</span></label>
+                    <span id="role_text">Rol</span></label>
                   <div class='col-md-6'>
 
                     <select class="form-control selectpicker" id="select_role" name="role_id" data-live-search="true">
@@ -77,13 +77,11 @@
                     </select>
                   </div>
                 </div>
-
+                <script type="text/javascript">
+                </script>
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                       <input class="btn btn-primary" type="submit" id="submit-user" value="Salvare">
-                        {{-- <button type="submit"  id="submit-user" class="btn btn-primary">
-                            {{ __('Register') }}
-                        </button> --}}
                     </div>
                 </div>
             </form>
@@ -121,7 +119,7 @@
         <tr>
             <td>{{ $user->name}}</td>
             <td>{{ $user->email}}</td>
-            <td>{{ $user->roles->pluck('name') }}</td>
+            <td>{{ $user->roles->pluck('name')[0] }}</td>
             <td class="clearfix" style="min-width: 100px;">
               @can('create')
                 <a class="btn btn-warning btn-xs btn-edit" href="/user/{{ $user->id }}/edit">Edit</a>
