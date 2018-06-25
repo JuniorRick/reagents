@@ -25,10 +25,9 @@
                               <a href="/orders">Eliberare noua</a>
                             @endcan
                             <a href="/orders/all">Eliberari totale</a>
-                            <a href="/people">Persoane</a>
-                            <a href="/producers">Producatori</a>
-
                             @if(Auth::user()->hasRole('admin'))
+                              <a href="/people">Persoane</a>
+                              <a href="/producers">Producatori</a>
                               <a href="/settings">Setari</a>
                             @endif
                         </div>

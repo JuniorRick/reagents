@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ProducerController extends Controller
 {
+
+  public function __construct() {
+    $this->middleware('\App\Http\Middleware\AdminMiddleware');
+  }
+
     public function index() {
       $producers = \App\Producer::all();
 
