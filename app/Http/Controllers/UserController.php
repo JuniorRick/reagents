@@ -20,7 +20,10 @@ class UserController extends Controller
     $user->password = Hash::make($request->password);
     $user->save();
 
-    $role = Role::findOrFail($request->role_id);
+    $role = Role::find($request->role_id);
+    if(empty($role)) {
+      $role = Role::where('name', 'visitor')->first();
+    }
     $user->assignRole($role);
 
     \Session::flash('success', 'utilizator ' . $request->name . ' adaugat cu success');
@@ -43,12 +46,15 @@ class UserController extends Controller
     }
 
     $user->save();
-    foreach($roles = $user->getRoleNames() as $role) {
-      $user->removeRole($role);
-    }
 
-    $role = Role::findOrFail($request->role_id);
-    $user->assignRole($role);
+    $role = Role::find($request->role_id);
+    if(!empty($role)) {
+      foreach($user->getRoleNames() as $role) {
+        $user->removeRole($role);
+      }
+
+      $user->assignRole($role);
+    }
 
     \Session::flash('update', 'utilizator ' . $user->name . ' a fost modificat');
     return redirect()->back();
