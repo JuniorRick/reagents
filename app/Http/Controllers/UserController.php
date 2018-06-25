@@ -14,13 +14,13 @@ class UserController extends Controller
       'email' => 'required|string|email|max:255|unique:users',
       'password' => 'required|string|min:6|confirmed',
     ]);
-
-    $user = $request->all();
-    $user['password'] = Hash::make($request->password);
-    \App\User::create($user);
+    $user = new \App\User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->save();
 
     $role = Role::findOrFail($request->role_id);
-    $user->roles()->detach($user->roles);
     $user->assignRole($role);
 
     \Session::flash('success', 'utilizator ' . $request->name . ' adaugat cu success');
@@ -37,14 +37,18 @@ class UserController extends Controller
     $user = \App\User::findOrFail($id);
     $user->name = $request->name;
     $user->email = $request->email;
-    $role = Role::findOrFail($request->role_id);
     if(strlen($request->password) >= 6) {
       $user->password = Hash::make($request->password);
     }
 
     $user->save();
-    $user->roles()->detach($user->roles);
+    foreach($roles = $user->getRoleNames() as $role) {
+      $user->removeRole($role);
+    }
+
+    $role = Role::findOrFail($request->role_id);
     $user->assignRole($role);
+
     \Session::flash('update', 'utilizator ' . $user->name . ' a fost modificat');
     return redirect()->back();
   }
