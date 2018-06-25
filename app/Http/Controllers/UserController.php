@@ -38,13 +38,7 @@ class UserController extends Controller
     $user->name = $request->name;
     $user->email = $request->email;
 
-    if($request->password_confirm != $request->password) {
-      \Session::flash('error', 'parola nu ete confirmata');
-      return redirect()->back();
-    }
-
     if(strlen($request->password) >= 6) {
-      if()
       $user->password = Hash::make($request->password);
     }
 

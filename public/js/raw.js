@@ -183,7 +183,9 @@ $('.btn-clone').click( function(event) {
     }, 500);
 
     for(let elem in response) {
-      if($(`[name="${elem}"]`).length) {
+      if(Date.parse(response[elem])){
+        $(`[name="${elem}"]`).val(response[elem].split(' ')[0]);
+      } else {
         $(`[name="${elem}"]`).val(response[elem]);
       }
     }
@@ -217,8 +219,12 @@ $('.btn-edit').click( function(event) {
 
     for(let elem in response) {
       if($(`[name="${elem}"]`).length) {
-        $(`[name="${elem}"]`).val(response[elem]);
-        console.log(response[elem]);
+
+        if(Date.parse(response[elem])){
+        $(`[name="${elem}"]`).val(response[elem].split(' ')[0]);
+        } else {
+          $(`[name="${elem}"]`).val(response[elem]);
+        }
       }
     }
 
