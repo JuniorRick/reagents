@@ -19,6 +19,7 @@ var curReagentId = 0;
 var curProducerId = 0;
 var curPersonId = 0;
 var curReportId = 0;
+var curUserId = 0;
 var selectedReagents = [];
 
 $(document).ready(function() {
@@ -75,8 +76,8 @@ $('#submit-reagent').click(function(e) {
     }
 
     var errorFound = false;
-    if($('#selectpicker').find("option:selected").val() == 'default' ||
-      $('#selectpicker').find("option:selected").val().length == 0) {
+    if($('#select_producer').find("option:selected").val() == 'default' ||
+      $('#select_producer').find("option:selected").val().length == 0) {
 
       $('#producer_text').css('color', "red");
       errorFound = true;
@@ -160,6 +161,14 @@ $('#submit-report').click(function(e) {
   $('.form-container').submit();
 });
 
+$('#submit-user').click(function(e) {
+  e.preventDefault();
+  if( $('input[type="submit"]').val() == 'Actualizare') {
+    $('.form-container').attr('action', `/user/${curReportId}/update`);
+  }
+  $('.form-container').submit();
+});
+
 //clone the record
 $('.btn-clone').click( function(event) {
   event.preventDefault();
@@ -195,6 +204,7 @@ $('.btn-edit').click( function(event) {
   curProducerId = url.split('/')[2];
   curPersonId = url.split('/')[2];
   curReportId = url.split('/')[2];
+  curUserId = url.split('/')[2];
 
   $.get(url).then(function(response) {
     $('.form-container').show();
@@ -208,6 +218,7 @@ $('.btn-edit').click( function(event) {
     for(let elem in response) {
       if($(`[name="${elem}"]`).length) {
         $(`[name="${elem}"]`).val(response[elem]);
+        console.log(response[elem]);
       }
     }
 

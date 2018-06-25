@@ -20,6 +20,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::group(['middleware' => ['web', 'auth']], function() {
+
+  Route::post('/user/store', 'UserController@store');
+  Route::get('/user/{id}/delete', 'UserController@delete');
+  Route::get('/user/{id}/edit', 'UserController@edit');
+  Route::post('/user/{id}/update', 'UserController@update');
+
   Route::get('/producers', 'ProducerController@index');
   Route::post('/producer/store', 'ProducerController@store');
   Route::post('/producer/{id}/update', 'ProducerController@update');

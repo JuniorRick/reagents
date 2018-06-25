@@ -22,7 +22,7 @@
 </head>
   <style media="screen">
     .flash-message {
-        position: absolute;
+        position: fixed;
         top: 2vh;
         left: 3vw;
         z-index: 9999;
@@ -98,6 +98,8 @@
     <script type="text/javascript">
       function lastReagentsVals() {
         $('#form-reagents').show();
+        hidden = false;
+        $('#form-toggle').text('Inchide formular');
         $('select[name=producer_id]').val({{ \Session::get('producer_id') }});
         $('.selectpicker').selectpicker('refresh');
         $('#datetimepicker1 input').val('{{ \Session::get('receive_date') }}'.split(" ").join('-'));

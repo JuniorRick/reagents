@@ -165,7 +165,7 @@
             <td>@if($reagent->quantity == '') - @else {{ $reagent->quantity}} @endif</td>
             <td>{{ explode(" ", $reagent->expire)[0]}}</td>
             <td>{{ $reagent->is_handed ? 'Eliberat' :  'In stoc' }}</td>
-            <td class="clearfix" style="min-width: 150px;">
+            <td class="clearfix" style="min-width: 160px;">
               @can('create')
                 <a class="btn btn-warning btn-xs btn-edit" href="/reagent/{{ $reagent->id }}/edit">Edit</a>
                 <a class="btn btn-primary btn-xs btn-clone" href="/reagent/{{ $reagent->id }}/edit">Clone</a>

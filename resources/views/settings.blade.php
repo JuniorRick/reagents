@@ -2,88 +2,52 @@
 
 
 @section('content')
-
+<style media="screen">
+  legend {
+    color: rgb(55, 77, 119);
+    font-style: italic;
+  }
+  .box {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+  }
+  form {
+    margin: 10px;
+  }
+</style>
 
 <div id="page-wrap">
 
-  <div class="container" style="max-width: 600px;">
+  <div class="container menu-settings">
+   <ul>
+     <li><a href="#users-settings">Setari utilizatori</a></li>
+     <li><a href="#roles-settings">Setari roluri si permisiuni</a></li>
+     <li><a href="#design-settings">Setari reagenti</a></li>
+   </ul>
+  </div>
 
-      <form class="" action="/settings/save" method="post">
-        {{ csrf_field() }}
-        <fieldset style="margin-top: 20px;">
-          <legend>Setari reagenti</legend>
-          <div class="form-group row">
-            <label for="reagent_expire_date_marker" class="col-2 col-form-label">Marcator expirare reagent (zile)</label>
-            <div class="col-10">
-              <input class="form-control" type="number" value="{{ $settings->reagent_expire_date_marker }}" name="reagent_expire_date_marker">
-            </div>
-          </div>
+  <div class="container" id="settings" >
+    @php
+      $users = \App\User::all();
+    @endphp
+    <div id="users-settings">@include('settings.userSettings')</div>
+    <div id="roles-settings">@include('settings.roleSettings')</div>
+    <div id="design-settings">@include('settings.designSettings')</div>
 
-          <div class="form-group row">
-            <label for="reagent_expired_color" class="col-2 col-form-label">Culoare reagent expirat</label>
-            <div class="col-10">
-              <input class="form-control" type="color" value="{{ $settings->reagent_expired_color }}" name="reagent_expired_color">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="reagent_expiring_color" class="col-2 col-form-label">Culoare reagent in curs de expirare</label>
-            <div class="col-10">
-              <input class="form-control" type="color" value="{{ $settings->reagent_expiring_color }}" name="reagent_expiring_color">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="select_column_sort" class="grey-text">
-               Sortare impicita reagenti dupa coloana:</label>
-            <select class="form-control selectpicker" id="select_column_sort" name="reagent_sort_by" data-live-search="true">
-              @php
-               $columns = array(
-                 '0' => "Producator",
-                 '1' => 'Data Primirii',
-                 '2' => 'Cod Intern',
-                 '3' => 'Denumire',
-                 '4' => 'Lot',
-                 '5' => 'Ref',
-                 '6' => 'Cantitate',
-                 '7' => 'Data Expirarii',
-                 '8' => 'Statut',
-               );
-
-              @endphp
-              @foreach ($columns as $key => $value)
-                <option data-tokens="{{ $value }}" value="{{ $key }}">
-                  {{ $value }}
-                </option>
-              @endforeach
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Setari Reagent Laborator</legend>
-          <div class="form-group row">
-            <label for="reagent_expired_color" class="col-2 col-form-label">Culoare reagent expirat</label>
-            <div class="col-10">
-              <input class="form-control" type="color" value="{{ $settings->empty_state_color }}" name="empty_state_color">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="reagent_expiring_color" class="col-2 col-form-label">Culoare reagent in curs de expirare</label>
-            <div class="col-10">
-              <input class="form-control" type="color" value="{{ $settings->used_state_color }}" name="used_state_color">
-            </div>
-          </div>
-        </fieldset>
-
-          <button type="submit" class="btn btn-primary pull-right">Salvare</button>
-
-      </form>
   </div>
 
 </div>
 <script type="text/javascript">
   $('#select_column_sort').selectpicker('val', '{{$settings->reagent_sort_by}}');
+
+  $('#settings > div').hide();
+  $($('.menu-settings > ul > li > a').first().attr('href')).show();
+
+  $('.menu-settings a').click( function() {
+    let id = $(this).attr('href');
+    $('#settings > div').hide();
+    $(id).show();
+  });
 </script>
 @endsection

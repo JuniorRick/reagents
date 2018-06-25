@@ -2,7 +2,34 @@
   display: inline;
 }
 
+.settings-grid {
+  display:grid;
+  grid-template-columns: auto auto;
+  border: 1px solid black;
+  grid-gap: 2px;
+  padding: 2px;
+}
 
+.settings-grid .grid-item {
+  max-width: 600px;
+  border: 1px solid black;
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  padding-bottom: 10px;
+}
+
+.menu-settings ul{
+  list-style-type: none;
+  margin: 10px;
+}
+
+.menu-settings > ul li {
+  display: inline;
+  padding: 10px;
+}
 .reagents_details {
   border: 1px solid black;
   width: 100%;
