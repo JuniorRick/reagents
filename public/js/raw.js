@@ -184,7 +184,7 @@ $('.btn-clone').click( function(event) {
 
     for(let elem in response) {
       if(Date.parse(response[elem])){
-        $(`[name="${elem}"]`).val(response[elem].split(' ')[0]);
+        $(`[name="${elem}"]`).val(response[elem].substring(0, 10));
       } else {
         $(`[name="${elem}"]`).val(response[elem]);
       }
@@ -221,7 +221,7 @@ $('.btn-edit').click( function(event) {
       if($(`[name="${elem}"]`).length) {
 
         if(Date.parse(response[elem])){
-        $(`[name="${elem}"]`).val(response[elem].split(' ')[0]);
+          $(`[name="${elem}"]`).val(response[elem].substring(0, 10));
         } else {
           $(`[name="${elem}"]`).val(response[elem]);
         }
