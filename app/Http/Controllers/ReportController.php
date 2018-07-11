@@ -8,16 +8,14 @@ class ReportController extends Controller
 {
   protected function changeOrderStatus($order) {
     $reports = \App\Report::where('order_id', $order->id)->get();
-    $finished = false;
+    $counter = 0;
 
     foreach ($reports as $report) {
       // if(\Carbon\Carbon::createFromFormat('Y-m-d', $report->end_date) !== false
       if($report->end_date !== null && $order->order_quantity == 0) {
-        $finished = true;
-      }else {
-        $finished = false;
+        $counter++;
       }
-      $order->state = $finished == true ? 1 : 0;
+      $order->state = $counter == sizeof($reports) ? 1 : 0;
     }
   }
 
