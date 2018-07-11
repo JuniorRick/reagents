@@ -5,7 +5,6 @@ $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     };
 });
 
-
 var allRows = $("tr");
 $("input#search").on("keydown keyup", function() {
   allRows.hide();
@@ -27,6 +26,18 @@ $(document).ready(function() {
   if(typeof sort_by !== 'undefined') {
     $("#reagents-table").tablesorter( {sortList: [[0,0], [sort_by,0]]});
   }
+
+  $('.scroll-up').click( function() {
+    $("html, body").animate({
+      scrollTop: 0,
+    }, 500);
+  });
+
+  $('.scroll-down').click( function() {
+    $("html, body").animate({
+      scrollTop: 100,
+    }, 500);
+  });
 
   //enable table sorter
   $("#orders-table").tablesorter();
@@ -464,18 +475,18 @@ $('#btn-store-orders').click( function() {
     $("tr:contains('Activ')").show();
   });
 
-function viewFinished() {
-    allRows.hide();
-    $('thead tr').show();
-    $('tfoot tr').show();
-    $("tr:contains('Finisat')").show();
-  }
-function viewActive() {
-    allRows.hide();
-    $('thead tr').show();
-    $('tfoot tr').show();
-    $("tr:contains('Activ')").show();
-  }
-function viewAll() {
-    allRows.show();
-  }
+  function viewFinished() {
+      allRows.hide();
+      $('thead tr').show();
+      $('tfoot tr').show();
+      $("tr:contains('Finisat')").show();
+    }
+  function viewActive() {
+      allRows.hide();
+      $('thead tr').show();
+      $('tfoot tr').show();
+      $("tr:contains('Activ')").show();
+    }
+  function viewAll() {
+      allRows.show();
+    }

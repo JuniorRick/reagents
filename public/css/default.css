@@ -200,3 +200,20 @@ a.on:link, a.on:visited{
     float: none;
   }
 }
+
+.scroller {
+  position: fixed;
+  bottom: 10%;
+  left: 50px;
+  font-size: 20px;
+}
+.scroller div {
+  padding: 7px 10px;
+}
+.scroller > div:hover {
+  outline: 2px solid rgb(72, 124, 241);
+  background: rgba(72, 124, 241, 0.1);
+  color: rgb(72, 124, 241);
+  cursor: pointer;
+  box-sizing: border-box;
+}

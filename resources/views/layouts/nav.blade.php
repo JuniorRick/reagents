@@ -27,3 +27,12 @@
     </div>
 
   </div>
+
+  <div class="scroller">
+    <div class="scroll-up">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <div class="scroll-down">
+      <i class="fa fa-arrow-down"></i>
+    </div>
+  </div>
