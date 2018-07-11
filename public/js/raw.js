@@ -35,7 +35,7 @@ $(document).ready(function() {
 
   $('.scroll-down').click( function() {
     $("html, body").animate({
-      scrollTop: 100,
+      scrollTop: $(document).height(),
     }, 500);
   });
 
