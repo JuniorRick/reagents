@@ -61,7 +61,7 @@
       <tbody>
 
         @foreach ($orders as $order)
-          <tr style="background: {{ $order->state == 1 ? '#e7ee9b' : ($order->state == 2 ? '#ed9999' : '#c2c1c1') }}">
+          <tr style="background: {{ $order->state == 1 ? '#ed9999' : '#c2c1c1' }}">
             <td>{{ ++$counter }}</td>
             <td> {{ $order->reagentCode($order->reagent_id) }} </td>
             <td> {{ $order->producer($order->reagent_id) }} </td>
@@ -73,7 +73,7 @@
             <td> {{ $order->handed_date }} </td>
             <td> {{ $order->reagentQty($order->reagent_id) }} </td>
             <td> {{ $order->order_quantity }} </td>
-            <td> {{ $order->state == 0 ? 'Nou ' : ($order->state == 1 ? 'Utilizat ' : 'Finisat ') }} </td>
+            <td> {{ $order->state == 0 ? 'Activ ' : 'Finisat ' }} </td>
             <td class="clearfix" style="min-width: 120px;">
 
 

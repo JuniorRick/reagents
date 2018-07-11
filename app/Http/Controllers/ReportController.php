@@ -6,6 +6,21 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+  protected function changeOrderStatus($order) {
+    $reports = \App\Report::where('order_id', $order->id)->get();
+    $finished = false;
+
+    foreach ($reports as $report) {
+      // if(\Carbon\Carbon::createFromFormat('Y-m-d', $report->end_date) !== false
+      if($report->end_date !== null && $order->order_quantity == 0) {
+        $finished = true;
+      }else {
+        $finished = false;
+      }
+      $order->state = $finished == true ? 1 : 0;
+    }
+  }
+
 
     public function reports($id) {
       $order = \App\Order::findOrFail($id);
@@ -26,20 +41,15 @@ class ReportController extends Controller
 
       $order = \App\Order::findOrFail($request->order_id);
 
-      if($order->order_quantity - $request->taken_quantity < 0){
+      if($order->order_quantity - $request->taken_quantity < 0) {
         \Session::flash('error', 'eroare: cantitate indisponibila');
       } else {
         $order->order_quantity -= $request->taken_quantity;
 
-        if($order->order_quantity > 0) {
-          $order->state = 1;
-        } else {
-          $order->state = 2;
-        }
-
         \App\Report::create($report);
-        $order->save();
       }
+      $this->changeOrderStatus($order);
+      $order->save();
 
       return redirect()->back();
     }
@@ -56,9 +66,13 @@ class ReportController extends Controller
       $order = \App\Order::find($report->order_id);
       $order->order_quantity += $report->taken_quantity;
       $qty = $order->reagentQty($order->reagent_id);
-      if($order->order_quantity > 0) {
-          $order->state = $order->order_quantity == $qty ? 0 : 1;
+      if($order->order_quantity > $qty) {
+        $order->order_quantity = $qty;
       }
+      if($order->order_quantity > 0) {
+          $order->state = 0;
+      }
+
       $order->save();
 
       \Session::flash('delete', 'detaliile au fost sterse');
@@ -68,14 +82,21 @@ class ReportController extends Controller
     public function update($id, Request $request) {
       $report = \App\Report::findOrFail($id);
 
+      $order = \App\Order::find($report->order_id);
+
       if( $report->taken_quantity != $request->taken_quantity) {
-        $order = \App\Order::find($report->order_id);
         $order->order_quantity -= $request->taken_quantity - $report->taken_quantity;
-        $order->save();
       }
 
       $report->update($request->all());
+      $this->changeOrderStatus($order);
+
+      $order->save();
+
       \Session::flash('update', 'detaliie au fost modificate');
       return redirect()->back();
     }
+
+
+
 }
