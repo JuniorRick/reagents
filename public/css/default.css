@@ -2,6 +2,31 @@
   display: inline;
 }
 
+.orders-view {
+  position: absolute;
+  left: 20px;
+  margin: 10px;
+}
+
+.orders-view span {
+  font-size: 22px;
+}
+
+.orders-view ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.orders-view ul li{
+  cursor: pointer;
+  margin: 5px;
+  width: 100px;
+}
+
+.orders-view ul li:hover {
+  border-bottom: 3px solid rgb(72, 124, 241);
+}
+
 .settings-grid {
   display:grid;
   grid-template-columns: auto auto;

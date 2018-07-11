@@ -5,10 +5,14 @@
 
 <div id="page-wrap">
 
-  {{-- <div class="container-fluid" style="margin: 5px;">
-    <button class="btn" id="form-toggle" name="button">Deschide formular</button>
-  </div> --}}
-
+  <div class="container orders-view">
+    <span>Vizualizare eliberari: </span>
+   <ul>
+     <li id="#orders-all" onclick="viewAll()">Toate</li>
+     <li id="#orders-active" onclick="viewActive()">Active</li>
+     <li id="#orders-finished" onclick="viewFinished()">Finisate</li>
+   </ul>
+  </div>
 
   <div class="container">
 

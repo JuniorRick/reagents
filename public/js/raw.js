@@ -409,7 +409,6 @@ $('.btn-select').click(function() {
 });
 
 
-//TODO error ckeck
 $('#btn-store-orders').click( function() {
   $(this).prop('disabled', true);
 
@@ -457,3 +456,26 @@ $('#btn-store-orders').click( function() {
       $('.orders-new').hide();
     }
   });
+
+  $('#orders-active').click(function() {
+    allRows.hide();
+    $('thead tr').show();
+    $('tfoot tr').show();
+    $("tr:contains('Activ')").show();
+  });
+
+function viewFinished() {
+    allRows.hide();
+    $('thead tr').show();
+    $('tfoot tr').show();
+    $("tr:contains('Finisat')").show();
+  }
+function viewActive() {
+    allRows.hide();
+    $('thead tr').show();
+    $('tfoot tr').show();
+    $("tr:contains('Activ')").show();
+  }
+function viewAll() {
+    allRows.show();
+  }
