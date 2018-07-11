@@ -17,7 +17,7 @@ class ReportController extends Controller
     public function store(Request $request) {
 
       $request->validate([
-        'taken_quantity' => 'required|integer',
+        'taken_quantity' => 'required|numeric',
         'person_id' => 'required|integer',
         'start_date' => 'required|date',
       ]);

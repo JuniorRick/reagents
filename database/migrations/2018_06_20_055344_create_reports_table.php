@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->integer('person_id')->unsigned();
-            $table->integer('taken_quantity');
+            $table->float('taken_quantity', 8, 2);
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->timestamps();

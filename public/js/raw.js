@@ -94,7 +94,7 @@ $('#submit-reagent').click(function(e) {
       errorFound = true;
     }
 
-    if( !Number.isInteger(parseInt($('#defaultQty').val()))) {
+    if( isNaN(($('#defaultQty').val()))) {
 
       $('#qty_text').css('color', 'red');
       $('.box-error').text("eroare de introducere a datelor");
