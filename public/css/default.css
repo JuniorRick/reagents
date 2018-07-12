@@ -187,6 +187,20 @@ a.on:link, a.on:visited{
 }
 
 
+@media only screen and (max-width: 1600px) {
+
+    .order-view {
+      position: static;
+    }
+    .orders-view ul li{
+      display: inline-block;
+    }
+    .text-center {
+      float: right;
+      padding-bottom: 20px;
+    }
+}
+
 @media only screen and (max-width: 760px) {
   #demo-bar-badge {
     display: block !important;
@@ -199,6 +213,11 @@ a.on:link, a.on:visited{
     display: block;
     float: none;
   }
+
+  .text-center {
+    display: none;
+  }
+
 }
 
 .scroller {
@@ -206,6 +225,7 @@ a.on:link, a.on:visited{
   bottom: 10%;
   left: 50px;
   font-size: 20px;
+  z-index: 100;
 }
 .scroller div {
   padding: 7px 10px;
