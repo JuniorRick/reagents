@@ -21,9 +21,9 @@
 
                         <div class="links">
                             <a href="/reagents">Reagenti</a>
-                            @can('create')
+                            @if(auth()->user()->can('create orders') || auth()->user()->hasRole('admin'))
                               <a href="/orders">Eliberare noua</a>
-                            @endcan
+                            @endif
                             <a href="/orders/all">Eliberari totale</a>
                             @if(Auth::user()->hasRole('admin'))
                               <a href="/people">Persoane</a>

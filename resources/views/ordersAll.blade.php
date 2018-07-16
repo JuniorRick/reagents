@@ -23,9 +23,11 @@
   @endphp
   @if (isset($orders) && $orders->count() != 0)
 
-    <h3 class="text-center">
-      Total reagenti eliberati
-    </h3>
+    <div class="clearfix">
+      <h3 class="text-center">
+        Total reagenti eliberati
+      </h3>
+    </div>
     <table id="orders-table" class="tablesorter records-table">
       <thead>
         <tr >
@@ -83,12 +85,12 @@
 
             <span class="btn-group">
 
-              <a href="/reports/{{ $order->id }}" class="btn btn-primary btn-xs" style="margin-left: 5px;"">Detalii</a>
+              <a href="/reports/{{ $order->id }}" class="btn btn-primary btn-xs" style="margin-left: 5px;">Detalii</a>
 
-              @can('delete')
+              @if(auth()->user()->can('delete orders') || auth()->user()->hasRole('admin'))
                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                 data-target="#modal-delete{{ $order->id}}" style="margin-left: 5px;">Sterge</button>
-              @endcan
+              @endif
             </span>
 
               <div id="modal-delete{{ $order->id }}" class="modal fade" role="dialog" style="z-index:9999;">

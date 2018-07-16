@@ -12,13 +12,17 @@
 
   <div class="container" style="max-width: 600px;">
 
+  @if(auth()->user()->can('create orders') || auth()->user()->hasRole('admin'))
     <div class="box-error"></div>
 
     <form method="post" action="order/store/">
 
       {{-- {{ csrf_field() }} --}}
       <br>
-      <p class="h4 text-center mb-4 add-new">Eliberare noua</p>
+      <div class="clearfix">
+        <p class="h4 text-center mb-4 add-new">Eliberare noua</p>
+
+      </div>
       <br>
 
 
@@ -85,6 +89,8 @@
       </div>
 
     </form>
+
+  @endif
   </div>
 
   {{-- TODO display errors here --}}

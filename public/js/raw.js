@@ -105,7 +105,7 @@ $('#submit-reagent').click(function(e) {
       errorFound = true;
     }
 
-    if( isNaN(($('#defaultQty').val()))) {
+    if( $('#defaultQty').val().length == 0 || isNaN(($('#defaultQty').val()))) {
 
       $('#qty_text').css('color', 'red');
       $('.box-error').text("eroare de introducere a datelor");

@@ -10,11 +10,11 @@
 
       <div id="demo-bar-buttons">
         <a href="/reagents">Reagenti</a>
-        @can('create')
+        @if(auth()->user()->can('create orders') || auth()->user()->hasRole('admin'))
           <a href="/orders">Eliberare Noua</a>
-        @endcan
+        @endif
         <a href="/orders/all">Reagent Laborator</a>
-        @if(Auth::user()->hasRole('admin'))
+        @if(auth()->user()->hasRole('admin'))
           <a href="/people">Persoane</a>
           <a href="/producers">Producatori</a>
         @endif

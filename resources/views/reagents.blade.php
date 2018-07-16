@@ -6,11 +6,11 @@
 
 <div id="page-wrap">
 
-@can('create')
+@if(auth()->user()->can('create reagents') || Auth::user()->hasRole('admin'))
   <div class="container-fluid" style="margin: 5px;">
     <button class="btn" id="form-toggle" name="button">Deschide formular</button>
   </div>
-@endcan
+@endif
 
   <div class="container" style="max-width: 600px;">
 
@@ -21,7 +21,9 @@
 
       {{ csrf_field() }}
       <br>
-      <p class="h4 text-center mb-4 add-new">Adaugare/Editare reagenti</p>
+      <div class="clearfix">
+        <p class="h4 text-center mb-4 add-new">Adaugare/Editare reagenti</p>
+      </div>
       <br>
 
 
@@ -79,7 +81,7 @@
       <label for="defaultCodRef" class="grey-text">Ref</label>
       <input type="text" id="defaultCodRef" class="form-control" name="ref">
 
-      <label for="defaultQty" class="grey-text">
+      <label for="defaultQty" class="grey-text"><span class="red-star">*</span>
         <span id="qty_text">Cantitate (Teste / ml)</span></label>
       <input type="text" id="defaultQty" class="form-control" name="quantity">
 

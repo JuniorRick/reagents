@@ -6,68 +6,71 @@
 <div id="page-wrap">
 
   <div class="container">
-    <h3 class="text-center">
-      Detalii reagent eliberat
-      {{ $order->reagentTitle($order->reagent_id) }}
-      [{{ $order->reagentCode($order->reagent_id) }}]
-    </h3>
+    <div class="clearfix">
+      <h3 class="text-center">
+        Detalii reagent eliberat
+        {{ $order->reagentTitle($order->reagent_id) }}
+        [{{ $order->reagentCode($order->reagent_id) }}]
+      </h3>
+    </div>
 
 
     <div class="container" style="max-width: 600px;">
       <br>
-      <div class="box-error"></div>
+      @if(auth()->user()->can('create reports') || auth()->user()->hasRole('admin'))
+          <div class="box-error"></div>
 
-      <form class="form-container" id="form-reagents" method="post" action="/reports/store/">
-        {{ csrf_field() }}
+          <form class="form-container" id="form-reagents" method="post" action="/reports/store/">
+            {{ csrf_field() }}
 
-        <input type="hidden" name="order_id" value="{{ $order->id }}">
+            <input type="hidden" name="order_id" value="{{ $order->id }}">
 
-        <label for="qtyOrder" class="grey-text"><span class="red-star">*</span>
-          <span id="code_text">Cantitate</span></label>
-        <input type="text" id="qtyOrder" class="form-control" name="taken_quantity">
+            <label for="qtyOrder" class="grey-text"><span class="red-star">*</span>
+              <span id="code_text">Cantitate</span></label>
+            <input type="text" id="qtyOrder" class="form-control" name="taken_quantity">
 
-        <label for="select_person" class="grey-text"><span class="red-star">*</span>
-           <span id="producer_text">Instalat de persoana</span></label>
-        <select class="form-control selectpicker" id="select_person" name="person_id" data-live-search="true">
-          <option value="default" selected disabled>----- Selectati persoana -----</option>
-          @php
-           $people = \App\Person::all();
-          @endphp
+            <label for="select_person" class="grey-text"><span class="red-star">*</span>
+               <span id="producer_text">Instalat de persoana</span></label>
+            <select class="form-control selectpicker" id="select_person" name="person_id" data-live-search="true">
+              <option value="default" selected disabled>----- Selectati persoana -----</option>
+              @php
+               $people = \App\Person::all();
+              @endphp
 
-          @foreach ($people as $person)
-            <option data-tokens="{{ $person->fullname }}" value="{{ $person->id }}">
-              {{ $person->fullname }}
-            </option>
-          @endforeach
-        </select>
+              @foreach ($people as $person)
+                <option data-tokens="{{ $person->fullname }}" value="{{ $person->id }}">
+                  {{ $person->fullname }}
+                </option>
+              @endforeach
+            </select>
 
 
-        <label for="datetimepicker_start" class="grey-text"><span class="red-star">*</span>
-           <span id="start_date">Data instalarii</span></label>
-        <div class='input-group date' id='datetimepicker_start'>
-          <input type='text' class="form-control datetimepicker" name="start_date"/>
-          <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-        </div>
+            <label for="datetimepicker_start" class="grey-text"><span class="red-star">*</span>
+               <span id="start_date">Data instalarii</span></label>
+            <div class='input-group date' id='datetimepicker_start'>
+              <input type='text' class="form-control datetimepicker" name="start_date"/>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
 
-        <label for="datetimepicker_end" class="grey-text"><span class="red-star">*</span>
-           <span id="end_date">Data finalizarii</span></label>
-        <div class='input-group date' id='datetimepicker_end'>
-          <input type='text' class="form-control datetimepicker" name="end_date"/>
-          <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-        </div>
+            <label for="datetimepicker_end" class="grey-text"><span class="red-star">*</span>
+               <span id="end_date">Data finalizarii</span></label>
+            <div class='input-group date' id='datetimepicker_end'>
+              <input type='text' class="form-control datetimepicker" name="end_date"/>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
 
-        <br>
-        <div class="text-center mt-4">
-          <input class="btn btn-primary" type="submit" id="submit-report" value="Salvare">
-          <button class="btn btn-default btn-cancel" type="button">Anulare</button>
-        </div>
+            <br>
+            <div class="text-center mt-4">
+              <input class="btn btn-primary" type="submit" id="submit-report" value="Salvare">
+              <button class="btn btn-default btn-cancel" type="button">Anulare</button>
+            </div>
 
-      </form>
-
+          </form>
+      @endif
 
       @if (isset($reports) && $reports->count() > 0)
 
@@ -104,14 +107,16 @@
                 <td>{{ $report->start_date }}</td>
                 <td>{{ $report->end_date }}</td>
                 <td class="clearfix" style="min-width: 150px;">
-                  @can('create')
+                  @if(auth()->user()->can('edit reports') || auth()->user()->hasRole('admin'))
                     <a class="btn btn-warning btn-xs btn-edit" href="/report/{{ $report->id }}/edit">Edit</a>
+                  @endif
+                  @if(auth()->user()->can('create reports') || auth()->user()->hasRole('admin'))
                     <a class="btn btn-primary btn-xs btn-clone" href="/report/{{ $report->id }}/edit">Clone</a>
-                  @endcan
-                  @can('delete')
+                  @endif
+                  @if(auth()->user()->can('delete reports') || auth()->user()->hasRole('admin'))
                     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                     data-target="#modal-delete{{ $report->id}}" style="margin: 5px 0 0 5px;">Delete</button>
-                  @endcan
+                  @endif
                 </td>
 
 
