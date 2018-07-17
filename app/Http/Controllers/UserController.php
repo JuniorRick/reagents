@@ -47,13 +47,13 @@ class UserController extends Controller
 
     $user->save();
 
-    $role = Role::find($request->role_id);
-    if(!empty($role)) {
+    $role_new = Role::find($request->role_id);
+    if(!empty($role_new)) {
       foreach($user->getRoleNames() as $role) {
         $user->removeRole($role);
       }
 
-      $user->assignRole($role);
+      $user->assignRole($role_new);
     }
 
     \Session::flash('update', 'utilizator ' . $user->name . ' a fost modificat');
