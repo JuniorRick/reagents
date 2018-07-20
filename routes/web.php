@@ -76,4 +76,6 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
   Route::get('/settings', 'SettingController@index');
   Route::post('/settings/save', 'SettingController@save');
+
+  Route::get('/report/lab', 'ReportController@reportLab');
 });

@@ -29,6 +29,7 @@
                               <a href="/people">Persoane</a>
                               <a href="/producers">Producatori</a>
                               <a href="/settings">Setari</a>
+                              <a style="color: #6f1c1c" href="/report/lab">Raport Laborator (.xlsx)</a>
                             @endif
                         </div>
                     </div>

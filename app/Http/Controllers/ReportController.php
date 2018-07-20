@@ -27,6 +27,11 @@ class ReportController extends Controller
       return view('reports')->with(['order' => $order, 'reports' => $reports]);
     }
 
+
+    public function reportLab() {
+      return \Excel::download( new \App\Exports\ReagentExport, 'report.xlsx');
+    }
+
     public function store(Request $request) {
 
       $request->validate([

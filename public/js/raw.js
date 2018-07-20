@@ -230,8 +230,8 @@ $('.btn-edit').click( function(event) {
 
     for(let elem in response) {
       if($(`[name="${elem}"]`).length) {
-
-        if(Date.parse(response[elem])){
+        //TODO remove time from date
+        if(false){
           $(`[name="${elem}"]`).val(response[elem].toString().split(' ')[0]);
         } else {
           $(`[name="${elem}"]`).val(response[elem]);
