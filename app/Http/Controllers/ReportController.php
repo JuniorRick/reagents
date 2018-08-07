@@ -28,7 +28,7 @@ class ReportController extends Controller
     }
 
 
-    public function reportLab() {
+    public function reportXlsx() {
       return \Excel::download( new \App\Exports\ReagentExport, 'report.xlsx');
     }
 

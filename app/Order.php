@@ -26,7 +26,7 @@ class Order extends Model
     }
 
     public function reagentExpireDate($id) {
-      return \App\Reagent::findOrFail($id)->expire;
+      return explode(" ", \App\Reagent::findOrFail($id)->expire)[0];
     }
 
     public function reagentTitle($id) {
