@@ -9,11 +9,11 @@
 
 
       <div id="demo-bar-buttons">
-        <a href="/reagents">Reagenti</a>
+        <a href="/reagents/stock">Reagenti</a>
         @if(auth()->user()->can('create orders') || auth()->user()->hasRole('admin'))
           <a href="/orders">Eliberare Noua</a>
         @endif
-        <a href="/orders/all">Reagent Laborator</a>
+        <a href="/orders/active">Reagent Laborator</a>
         @if(auth()->user()->hasRole('admin'))
           <a href="/people">Persoane</a>
           <a href="/producers">Producatori</a>

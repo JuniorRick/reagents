@@ -20,11 +20,11 @@
                         </div>
 
                         <div class="links">
-                            <a href="/reagents">Reagenti</a>
+                            <a href="/reagents/stock">Reagenti</a>
                             @if(auth()->user()->can('create orders') || auth()->user()->hasRole('admin'))
                               <a href="/orders">Eliberare noua</a>
                             @endif
-                            <a href="/orders/all">Eliberari totale</a>
+                            <a href="/orders/active">Eliberari totale</a>
                             @if(Auth::user()->hasRole('admin'))
                               <a href="/people">Persoane</a>
                               <a href="/producers">Producatori</a>

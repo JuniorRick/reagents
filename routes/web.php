@@ -43,6 +43,9 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
 
   Route::get('/reagents', 'ReagentController@index');
+  Route::get('/reagents/stock', 'ReagentController@stock');
+  Route::get('/reagents/handed', 'ReagentController@handed');
+
   Route::get('/reagents/all', 'ReagentController@reagentsJSON');
 
   Route::get('/reagent/{id}', 'ReagentController@reagent');
@@ -58,6 +61,8 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
   Route::get('/orders', 'OrderController@index');
   Route::get('/orders/all', 'OrderController@orders');
+  Route::get('/orders/active', 'OrderController@active');
+  Route::get('/orders/finished', 'OrderController@finished');
 
   Route::post('/orders/store', 'OrderController@store');
   Route::post('/orders/bulkstore', 'OrderController@bulkstore');

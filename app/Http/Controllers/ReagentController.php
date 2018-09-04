@@ -21,6 +21,17 @@ class ReagentController extends Controller
       return response()->json($reagents);
     }
 
+    public function stock() {
+      $reagents =  \App\Reagent::where('is_handed', '0')->get();
+      return view('reagents')->with('reagents', $reagents);
+    }
+
+    public function handed() {
+      $reagents = \App\Reagent::where('is_handed', '1')->get();
+      return view('reagents')->with('reagents', $reagents);
+    }
+
+
     public function reagentsJSON() {
       $reagents = \App\Reagent::all();
 

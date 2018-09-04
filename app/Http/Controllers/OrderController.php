@@ -17,8 +17,19 @@ class OrderController extends Controller
     }
 
     public function orders() {
-
       $orders = \App\Order::all();
+
+      return view('ordersAll')->with('orders', $orders);
+    }
+
+    public function active() {
+      $orders = \App\Order::where('state', '0')->get();
+
+      return view('ordersAll')->with('orders', $orders);
+    }
+
+    public function finished() {
+      $orders = \App\Order::where('state', '1')->get();
 
       return view('ordersAll')->with('orders', $orders);
     }

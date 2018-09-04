@@ -40,6 +40,19 @@
   border: 1px solid black;
 }
 
+.reagents-filter {
+  text-align: center;
+  margin-top: 10px;
+}
+.reagents-filter li{
+  display: inline;
+  padding-right: 20px;
+}
+
+.filter li a{
+  text-decoration: none;
+}
+
 .title {
   text-align: center;
   font-size: 25px;

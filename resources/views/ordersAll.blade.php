@@ -7,10 +7,10 @@
 
   <div class="container orders-view">
     <span>Vizualizare eliberari: </span>
-   <ul>
-     <li id="#orders-all" onclick="viewAll()">Toate</li>
-     <li id="#orders-active" onclick="viewActive()">Active</li>
-     <li id="#orders-finished" onclick="viewFinished()">Finisate</li>
+   <ul class="filter">
+     <li><a href="/orders/active">Active</a></li>
+     <li><a href="/orders/finished">Finisate</a></li>
+     <li><a href="/orders/all">Totale</a></li>
    </ul>
   </div>
 
