@@ -54,7 +54,7 @@
               </span>
             </div>
 
-            <label for="datetimepicker_end" class="grey-text"><span class="red-star">*</span>
+            <label for="datetimepicker_end" class="grey-text">
                <span id="end_date">Data finalizarii</span></label>
             <div class='input-group date' id='datetimepicker_end'>
               <input type='text' class="form-control datetimepicker" name="end_date"/>
