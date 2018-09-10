@@ -83,7 +83,7 @@ $('#submit-reagent').click(function(e) {
   var url =  `/reagents/all`;
   $.get(url).then(function(response) {
     if( $('input[type="submit"]').val() == 'Actualizare') {
-      $('.form-container').attr('action', `reagent/${curReagentId}/update`);
+      $('.form-container').attr('action', `/reagent/${curReagentId}/update`);
     }
 
     var errorFound = false;
