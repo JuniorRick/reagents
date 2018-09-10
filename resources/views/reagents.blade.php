@@ -16,7 +16,7 @@
 
     <div class="box-error"></div>
 
-    <form class="form-container" id="form-reagents" method="post" action="reagent/store/"
+    <form class="form-container" id="form-reagents" method="post" action="/reagent/store/"
       style="display: none">
 
       {{ csrf_field() }}
