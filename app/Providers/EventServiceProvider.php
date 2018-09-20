@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        'Illuminate\Auth\Events\Login' => [
+          'App\Listeners\LogSuccessfulLogin',
+        ],
     ];
 
     /**
@@ -27,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        // $events->listen('auth.login', function ($user, $remember) {
+        //   Log::info( auth()->user()->name . "was logged in ");
+        // });
         //
     }
 }
