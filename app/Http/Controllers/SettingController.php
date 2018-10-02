@@ -19,4 +19,13 @@ class SettingController extends Controller
 
       return redirect()->back();
     }
+
+    public function deleteLogs() {
+      $filename = '../storage/logs/auth.log';
+      if(file_exists ( $filename )) {
+        unlink($filename);
+      }
+
+      return redirect()->back();
+    }
 }

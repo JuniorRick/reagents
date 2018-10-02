@@ -119,7 +119,7 @@
         <tr>
             <td>{{ $user->name}}</td>
             <td>{{ $user->email}}</td>
-            <td>{{ $user->roles->pluck('name')[0] }}</td>
+            <td>{{ sizeof($user->roles->pluck('name')) > 0  ? $user->roles->pluck('name')[0] : ""}}</td>
             <td class="clearfix" style="min-width: 100px;">
               @can('create')
                 <a class="btn btn-warning btn-xs btn-edit" href="/user/{{ $user->id }}/edit">Edit</a>

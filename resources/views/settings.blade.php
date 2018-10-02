@@ -24,6 +24,8 @@
      <li><a href="#users-settings">Setari utilizatori</a></li>
      <li><a href="#roles-settings">Setari roluri si permisiuni</a></li>
      <li><a href="#design-settings">Setari reagenti</a></li>
+     <li><a href="#logs">Logs</a></li>
+
    </ul>
   </div>
 
@@ -34,6 +36,7 @@
     <div id="users-settings">@include('settings.userSettings')</div>
     <div id="roles-settings">@include('settings.roleSettings')</div>
     <div id="design-settings">@include('settings.designSettings')</div>
+    <div id="logs">@include('settings.logs')</div>
 
   </div>
 
@@ -49,5 +52,6 @@
     $('#settings > div').hide();
     $(id).show();
   });
+
 </script>
 @endsection

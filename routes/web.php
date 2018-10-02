@@ -81,6 +81,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
   Route::get('/settings', 'SettingController@index');
   Route::post('/settings/save', 'SettingController@save');
+  Route::get('/settings/logs/delete', "SettingController@deleteLogs");
 
   Route::get('/report/xlsx', 'ReportController@reportXlsx');
   Route::get('/report/usage', function() {
