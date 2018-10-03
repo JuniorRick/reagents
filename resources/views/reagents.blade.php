@@ -3,6 +3,12 @@
 
 @section('content')
 
+  <ul class="reagents-filter">
+    <li><a href="/reagents/stock">Reagenti stoc</a></li>
+    <li><a href="/reagents/handed">Reagenti eliberati</a></li>
+    <li><a href="/reagents">Arhiva reagenti</a></li>
+    <li class="show-filters">Filtre</li>
+  </ul>
 
 <div id="page-wrap">
 
@@ -120,12 +126,6 @@
 
 
     @include('layouts.error')
-
-    <ul class="reagents-filter">
-      <li><a href="/reagents/stock">Reagenti stoc</a></li>
-      <li><a href="/reagents/handed">Reagenti eliberati</a></li>
-      <li><a href="/reagents">Arhiva reagenti</a></li>
-    </ul>
 
     <table id="reagents-table" class="tablesorter records-table">
       <thead>
